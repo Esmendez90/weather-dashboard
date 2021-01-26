@@ -1,61 +1,28 @@
 .header {
-
-    text-align: center;
-
-    background-color:rgb(58, 53, 53);
-
-    color: white;
-
-    padding: 15px;
-
-    margin: auto;
-
+  text-align: center;
+  background-color: rgb(58, 53, 53);
+  color: white;
+  padding: 15px;
+  margin: auto;
 }
-
-
 
 .search-City-container {
-
-    background-color: rgb(236, 229, 229);
-
-    padding: 15px;
-
-    width: fit-content;
-
-    margin: 0px 10px 20px 0px;
-
-    float: left;
-
-    clear: right;
-
-    
-
+  background-color: rgb(236, 229, 229);
+  padding: 15px;
+  width: fit-content;
+  margin: 0px 10px 20px 0px;
+  float: left;
+  clear: right;
 }
-
-
 
 .search-history {
-
-    margin: 10px 0px 0px;
-
+  margin: 10px 0px 0px;
 }
-
-
 
 .current-city-data {
-
-    padding: 15px;
-
-
-
+  padding: 15px;
 }
 
-
-
 .forecast {
-
-    padding: 15px; 
-
-    
-
+  padding: 15px;
 }
