@@ -26,3 +26,7 @@
 .forecast {
   padding: 15px;
 }
+
+#weather-icon {
+  width: 40px;
+}
