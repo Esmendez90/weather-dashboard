@@ -55,12 +55,17 @@ function displayCityWeather(city) {
       console.log(response);
       uvIndex.text("UV Index: " + response.current.uvi);
 
+      // for loop that will get us the 5 day weather forecast of orlando
+
       for (var i = 1; i < 6; i++) {
         var date = new Date(response.daily[i].dt * 1000);
         var forecastDate =
           date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
         var forecastTemp = response.daily[i].temp.day;
         var forecastHumidity = response.daily[i].humidity;
+
+        // this will create 5 cards that will display the weather forecast for 5 days.
+        // for now, it is defaulted to ONLY show the 5 day forecast for orlando. See line 113 in js.
 
         $("#forecast").append(`<div
           id="forecast-card"
