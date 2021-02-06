@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .header {
   text-align: center;
   background-color: rgb(58, 53, 53);
@@ -23,8 +29,39 @@
   padding: 15px;
 }
 
-.forecast {
+#uv-index {
+  display: inline-block;
+  padding: 2px 5px;
+  font-weight: bold;
+}
+
+.green {
+  background-color: rgb(76, 204, 76);
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.red {
+  background-color: red;
+}
+
+#forecast {
   padding: 15px;
+}
+
+#forecast-card {
+  display: inline-block;
+  padding: 5px;
+  margin: 15px;
+  width: auto;
+  text-align: center;
+  overflow: auto;
 }
 
 #weather-icon {

@@ -45,11 +45,9 @@
 
       <!-- List of searched cities -->
 
-      <div
-        id="list-of-cities"
-        class="card search-history"
-        style="width: 20rem"
-      ></div>
+      <div id="list-of-cities" class="card search-history" style="width: 20rem">
+        <ul id="saved-cities" class="list-group list-group-flush"></ul>
+      </div>
     </form>
 
     <!-- Display city's current weather data card -->
@@ -67,7 +65,10 @@
 
       <div id="wind-speed"></div>
 
-      <div id="uv-index"></div>
+      <div id="uvDiv">
+        UV Index:
+        <div id="uv-index"></div>
+      </div>
     </form>
 
     <!-- 5-Day Forecast-->
