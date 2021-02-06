@@ -28,7 +28,8 @@ The weather dashboard should allow the user to:
 * Search for a city and be presented with current and future conditions for that city and that city is added to the search history.
 * View current weather conditions for that city and be presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index.
 * View future weather conditions for that city and be presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity.
-* Open the weather dashboard be presented with the last searched cities.
+* Open the weather dashboard and be presented with a list of the last searched cities.
+* Click on any of the previously searched cities and see the weather data of the city the user clicked on.
 
 ## Screenshots
 
