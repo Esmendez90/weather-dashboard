@@ -137,6 +137,9 @@ ulTag.click(function (event) {
 if (localStorage.getItem("city-weather") === null) {
   localStorage.setItem("city-weather", JSON.stringify([]));
 }
+function deleteItems() {
+  localStorage.clear();
+}
 
 renderCities();
 displayCityWeather("New York"); // New york is set as a default city 

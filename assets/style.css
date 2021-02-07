@@ -21,6 +21,15 @@
   clear: right;
 }
 
+#search-btn {
+  width: 15%;
+  margin: 2%;
+}
+
+#clear-cities {
+  margin: 2%;
+}
+
 .search-history {
   margin: 10px 0px 0px;
 }
