@@ -56,6 +56,8 @@ function displayCityWeather(city) {
     }).then(function (response) {
       // UV index color
       var uvIndexValue = response.current.uvi;
+      // UV index value display on page
+      uvIndex.text(uvIndexValue);
 
       if (uvIndexValue >= 0 && uvIndexValue < 3) {
         uvIndex.addClass("green");
@@ -66,9 +68,6 @@ function displayCityWeather(city) {
       } else {
         uvIndex.addClass("red");
       }
-
-      // UV index value display on page
-      uvIndex.text(response.current.uvi);
 
       // for loop that will get us the 5 day weather forecast
       for (var i = 1; i < 6; i++) {
@@ -99,6 +98,7 @@ searchBtn.on("click", function (event) {
   storage.push(citySearch);
   localStorage.setItem("city-weather", JSON.stringify(storage));
 
+  uvIndex.removeClass("green yellow orange red");
   displayCityWeather(citySearch);
   renderCities();
 });
@@ -124,13 +124,14 @@ function renderCities() {
 
 // If the user clicks on a city from the list then the data of that city will be displayed
 ulTag.click(function (event) {
+  
   var element = event.target;
   var index = element.id; // will give us the id of the li element the user clicks on
   console.log(index); 
   var megadeth = $("#" + index); // calling the id of the element and concatenating it with the index variable
   var city = megadeth.text(); // will give us the text (the city name) of the targeted element
   console.log(city);
-
+  uvIndex.removeClass("green yellow orange red");
   displayCityWeather(city); // will run the function and give us the data of the city
 });
 

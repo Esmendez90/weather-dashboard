@@ -44,6 +44,10 @@
   font-weight: bold;
 }
 
+.none {
+  background-color: none;
+}
+
 .green {
   background-color: rgb(76, 204, 76);
 }
