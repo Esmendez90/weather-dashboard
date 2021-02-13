@@ -81,7 +81,7 @@ function displayCityWeather(city) {
 
         // Create 5 cards that will display the weather forecast for 5 days.
         $("#forecast").append(
-          `<div id="forecast-card" class="card text-white bg-primary mb-3" style="max-width: 10rem;"><p class="card-text">${forecastDate}</p><img src="${forecastIconUrl}"/><p class="card-text">${forecastTemp} \xB0F</p><p class="card-text">${forecastHumidity} %</p></div>`
+          `<div id="forecast-card" class="card text-white bg-primary mb-3" style="max-width: 10rem;"><p class="card-text">${forecastDate}</p><img src="${forecastIconUrl}"/><p class="card-text">${forecastTemp} \xB0F</p><p class="card-text"> Humidity: ${forecastHumidity} %</p></div>`
         );
       }
     });
