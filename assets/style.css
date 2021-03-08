@@ -51,12 +51,23 @@ h1 {
   width: 40%;
   height: 35px;
   margin: 10px auto;
+  border-radius: 10px;
+  opacity: 0.5;
+  color: black;
 }
 
 #search-btn {
-  width: 6%;
+  width: fit-content;
+  padding: 5px;
   height: 40px;
   margin: auto;
+  border-radius: 10px;
+  opacity: 0.7;
+}
+
+.fa {
+  color: rgb(44, 44, 206);
+  font-size: 25px;
 }
 
 .city-list-style {
@@ -68,7 +79,18 @@ h1 {
 }
 
 #clear-cities {
-  margin: 2%;
+  width: fit-content;
+  height: 40px;
+  margin: auto; 
+  opacity: 0.7;
+}
+
+.clearBtn {
+  padding: 5px;
+  border-radius: 10px;
+  color: rgb(36, 36, 175);
+  font-size: 20px;
+  font-weight: solid;
 }
 
 .search-history {

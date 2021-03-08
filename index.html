@@ -35,7 +35,16 @@
     <!-- Search city card -->
 
     <form class="search-City-container">
-      <label for="city">Search City</label>
+      <label
+        for="city"
+        style="
+          font-size: x-large;
+          color: rgb(67, 67, 131);
+          font-weight: bold;
+          text-shadow: 1px 1px white;
+        "
+        >Search City</label
+      >
       <div>
         <input id="city" type="text" name="city" placeholder="City Name" />
 
@@ -52,7 +61,7 @@
         </div>
         <!-- </div> -->
         <div id="clear-cities">
-          <button onclick="deleteItems()">Clear Cities</button>
+          <button class="clearBtn" onclick="deleteItems()">Clear</button>
         </div>
       </div>
     </form>
