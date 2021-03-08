@@ -121,13 +121,11 @@ function renderCities() {
   }
 }
 
-
 // If the user clicks on a city from the list then the data of that city will be displayed
 ulTag.click(function (event) {
-  
   var element = event.target;
   var index = element.id; // will give us the id of the li element the user clicks on
-  console.log(index); 
+  console.log(index);
   var megadeth = $("#" + index); // calling the id of the element and concatenating it with the index variable
   var city = megadeth.text(); // will give us the text (the city name) of the targeted element
   console.log(city);
@@ -143,4 +141,4 @@ function deleteItems() {
 }
 
 renderCities();
-displayCityWeather("New York"); // New york is set as a default city 
+displayCityWeather("New York"); // New york is set as a default city

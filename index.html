@@ -67,31 +67,39 @@
     </form>
 
     <!-- Display city's current weather data card -->
+    <!-- <form class="current-city-data" style="width: 100%;"> -->
+    <form class="current-city-data" style="width: fit-content;">
+      
+        <h5 id="current-date"></h5>
 
-    <form class="card current-city-data">
-      <h5 id="current-date"></h5>
+        <h5 id="city-name">City Name</h5>
 
-      <h5 id="city-name">City Name</h5>
+        <img id="weather-icon" src="" />
 
-      <img id="weather-icon" src="" />
+        <div id="temperature"></div>
 
-      <div id="temperature"></div>
+        <div id="humidity"></div>
 
-      <div id="humidity"></div>
+        <div id="wind-speed"></div>
 
-      <div id="wind-speed"></div>
-
-      <div id="uvDiv">
-        UV Index:
-        <div id="uv-index"></div>
-      </div>
+        <div id="uvDiv">
+          UV Index:
+          <div id="uv-index"></div>
+        </div>
+      
+    </form>
+    <form style="text-align: center;">
+      
+        <h5>5-Day Forecast</h5>
+        <div id="forecast"></div>
+      
     </form>
 
     <!-- 5-Day Forecast-->
 
-    <div id="forecast">
+    <!-- <div id="forecast">
       <h5 class="htags">5-Day Forecast:</h5>
-    </div>
+    </div> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
