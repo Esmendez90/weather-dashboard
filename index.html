@@ -35,20 +35,26 @@
     <!-- Search city card -->
 
     <form class="search-City-container">
-      <h5 class="htags">Search for a City:</h5>
+      <label for="city">Search City</label>
+      <div>
+        <input id="city" type="text" name="city" placeholder="City Name" />
 
-      <input id="city" type="text" name="city" placeholder="Search City" />
-
-      <button id="search-btn" type="search">
-        <i class="fa fa-search"></i>
-      </button>
+        <button id="search-btn" type="search">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
 
       <!-- List of searched cities -->
-
-      <div id="list-of-cities" class="card search-history" style="width: 20rem">
-        <ul id="saved-cities" class="list-group list-group-flush"></ul>
+      <div>
+        <div class="city-list-style">
+          <!-- <div id="list-of-cities" class="card search-history" style="width: 20rem"> -->
+          <ul id="saved-cities" class="list-group list-group-flush"></ul>
+        </div>
+        <!-- </div> -->
+        <div id="clear-cities">
+          <button onclick="deleteItems()">Clear Cities</button>
+        </div>
       </div>
-      <div id="clear-cities"><button onclick="deleteItems()">Clear Cities</button></div>
     </form>
 
     <!-- Display city's current weather data card -->

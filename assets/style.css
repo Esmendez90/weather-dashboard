@@ -6,24 +6,65 @@
 
 .header {
   text-align: center;
-  background-color: rgb(58, 53, 53);
-  color: white;
   padding: 15px;
   margin: auto;
+  height: 150px;
+  background-image: linear-gradient(
+    to bottom,
+    #0a577a,
+    #0e77a8,
+    #1399d6,
+    #0db1fd
+  );
+  border-style: solid;
+  border-color: white;
+  border-width: 10px;
+}
+
+h1 {
+  color: white;
+  text-shadow: 2px 2px black;
+  font-size: 50px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
 }
 
 .search-City-container {
-  background-color: rgb(236, 229, 229);
+  background-image: url("https://dv-website.s3.amazonaws.com/uploads/2019/05/jz_csweather_060619.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
   padding: 15px;
-  width: fit-content;
-  margin: 0px 10px 20px 0px;
-  float: left;
-  clear: right;
+  width: 100%;
+  margin: auto;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.658);
+  border-width: 10px;
+  text-align: center;
+}
+
+#city {
+  width: 40%;
+  height: 35px;
+  margin: 10px auto;
 }
 
 #search-btn {
-  width: 15%;
-  margin: 2%;
+  width: 6%;
+  height: 40px;
+  margin: auto;
+}
+
+.city-list-style {
+  width: fit-content;
+  height: auto;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
 }
 
 #clear-cities {
