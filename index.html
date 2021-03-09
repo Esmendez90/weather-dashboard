@@ -67,15 +67,18 @@
     </form>
 
     <!-- Display city's current weather data card -->
-    <!-- <form class="current-city-data" style="width: 100%;"> -->
-    <form class="current-city-data" style="width: fit-content;">
-      
-        <h5 id="current-date"></h5>
 
-        <h5 id="city-name">City Name</h5>
+    <form class="current-city-data" style="width: auto">
+      <div style="text-align: center">
+        <label id="city-name" style="font-size: 22px">City Name</label>
 
-        <img id="weather-icon" src="" />
+        <label id="current-date" style="font-size: 20px"></label>
 
+        <div>
+          <img id="weather-icon" style="width: 90px" src="" />
+        </div>
+      </div>
+      <div>
         <div id="temperature"></div>
 
         <div id="humidity"></div>
@@ -86,16 +89,25 @@
           UV Index:
           <div id="uv-index"></div>
         </div>
-      
-    </form>
-    <form style="text-align: center;">
-      
-        <h5>5-Day Forecast</h5>
-        <div id="forecast"></div>
-      
+      </div>
     </form>
 
     <!-- 5-Day Forecast-->
+    <form style="text-align: center">
+      <label
+        for="forecast"
+        style="
+          font-size: x-large;
+          color: rgb(67, 67, 131);
+          margin: 5px 0px 0px;
+          font-weight: bold;
+          text-shadow: 1px 1px white;
+          width: fit-content;
+        "
+        >5-Day Forecast</label
+      >
+      <div id="forecast"></div>
+    </form>
 
     <!-- <div id="forecast">
       <h5 class="htags">5-Day Forecast:</h5>

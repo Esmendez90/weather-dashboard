@@ -27,7 +27,7 @@ function displayCityWeather(city) {
     var date = new Date(response.dt * 1000);
     var forecastDate =
       date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
-    $("#current-date").text(forecastDate);
+    $("#current-date").text(`(${forecastDate})`);
 
     // Output City name and weather icon
     var iconData = response.weather[0].icon;
