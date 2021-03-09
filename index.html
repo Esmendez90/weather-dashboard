@@ -70,22 +70,22 @@
 
     <form class="current-city-data" style="width: auto">
       <div style="text-align: center">
-        <label id="city-name" style="font-size: 22px">City Name</label>
+        <label id="city-name" style="font-size: 25px">City Name</label>
 
-        <label id="current-date" style="font-size: 20px"></label>
+        <label id="current-date" style="font-size: 25px"></label>
 
         <div>
-          <img id="weather-icon" style="width: 90px" src="" />
+          <img id="weather-icon" style="width: 120px" src="" />
         </div>
       </div>
       <div>
-        <div id="temperature"></div>
+        <div id="temperature" style="font-size: 22px"></div>
 
-        <div id="humidity"></div>
+        <div id="humidity" style="font-size: 21px"></div>
 
-        <div id="wind-speed"></div>
+        <div id="wind-speed" style="font-size: 20px"></div>
 
-        <div id="uvDiv">
+        <div id="uvDiv" style="font-size: 19px">
           UV Index:
           <div id="uv-index"></div>
         </div>
@@ -93,15 +93,15 @@
     </form>
 
     <!-- 5-Day Forecast-->
-    <form style="text-align: center">
+    <form id="five-day-div" style="text-align: center">
       <label
         for="forecast"
         style="
-          font-size: x-large;
-          color: rgb(67, 67, 131);
-          margin: 5px 0px 0px;
+          font-size: 28px;
+          color: white;
+          margin: 5px 0px 3px;
           font-weight: bold;
-          text-shadow: 1px 1px white;
+          text-shadow: 1px 2px black;
           width: fit-content;
         "
         >5-Day Forecast</label
@@ -109,9 +109,7 @@
       <div id="forecast"></div>
     </form>
 
-    <!-- <div id="forecast">
-      <h5 class="htags">5-Day Forecast:</h5>
-    </div> -->
+ 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 

@@ -4,6 +4,17 @@
   box-sizing: border-box;
 }
 
+body {
+  background-image: linear-gradient(
+    to right,
+    #6685ad,
+    #c2c17b,
+    #6685ad,
+    #bbc96d,
+    #275970
+  );
+}
+
 .header {
   text-align: center;
   padding: 15px;
@@ -109,7 +120,6 @@ h1 {
 .current-city-data {
   color: white;
   text-shadow: 1px 2px black;
-  margin-top: 15px;
   padding: 15px;
   float: left;
   clear: both;
@@ -170,15 +180,48 @@ h1 {
   border-color: rgb(194, 13, 13);
 }
 
-#forecast {
-  padding: 15px;
+#five-day-div {
+  overflow: auto;
+  width: auto;
+  background-image: linear-gradient(
+    to bottom,
+    #0a577a,
+    #0e77a8,
+    #1399d6,
+    #0db1fd
+  );
+  border-style: solid;
+  border-color: rgb(236, 240, 243);
+  border-width: 10px;
 }
 
 #forecast-card {
   display: inline-block;
   padding: 5px;
   margin: 10px;
-  width: auto;
+  width: 216px;
   text-align: center;
   overflow: auto;
+}
+
+.card-text {
+  margin: auto;
+  font-size: 20px;
+  text-shadow: 2px 2px black;
+}
+
+#five-day-icon {
+  width: 135px;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 770px) {
+  .current-city-data {
+    text-align: center;
+    float: none;
+    width: -webkit-fill-available;
+    margin: auto;
+    border-style: solid;
+    border-color: rgb(236, 240, 243);
+    border-width: 10px;
+  }
 }
