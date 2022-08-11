@@ -3,6 +3,7 @@ body {
   background-color: rgb(130, 187, 240);
   margin: 0;
 }
+
 .form-container {
   display: grid;
   align-items: center;
@@ -34,13 +35,10 @@ i {
   color: #383838;
 }
 .weatherData-container {
-  padding: 1rem 3rem;
+  padding: 2rem;
 }
 
 #weather-icon {
-  /* margin-left: 3rem;
-  display: inline-flex;
-  margin-bottom: -52px; */
   float: right;
   width: 33%;
 }
@@ -48,26 +46,39 @@ i {
   width: fit-content;
   display: inline-flex;
 }
-/* #city-name,
-#temperature {
-  font-size: 28px;
-  margin-bottom: 1rem;
-  margin-bottom: 1rem;
-} */
-h1,h3{
+h1,
+h3 {
   font-size: 28px;
   margin-top: 2rem;
   margin-bottom: 0;
 }
-h3{
+h3 {
   margin-top: 0;
   margin-bottom: 1rem;
 }
-#temperature{
+#temperature {
   font-weight: 200;
 }
-p{
+p {
   margin: 0;
+}
+.forecast-container {
+  padding: 2rem;
+  background-color: #b5cff145;
+}
+#forecast {
+  display: flex;
+  overflow: hidden;
+  overflow-x: scroll;
+}
+#forecast-card {
+  border: 1px solid #ffffff63;
+  border-radius: 10px;
+  padding: 1rem;
+  
+}
+#forecast-card:not(:last-child) {
+  margin-right: 1rem;
 }
 /* 
 h1 {
