@@ -35,8 +35,9 @@ function displayCityWeather(city) {
     cityName.text(response.name);
     $("#weather-icon").attr("src", weatherIconUrl);
 
+    cityName.text(response.main.name);
     // Output Temperature
-    cityTemp.text("Temperature: " + response.main.temp + " \xB0" + "F");
+    cityTemp.text(response.main.temp + " \xB0" + "F");
 
     // Output Humidity
     humidity.text("Humidity: " + response.main.humidity + " %");

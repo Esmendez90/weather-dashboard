@@ -3,9 +3,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -28,25 +27,28 @@
       </div>
     </section>
 
-    <div class="current-city-data row">
-      <div class="col-sm-6">
-        <ul>
-          <li id="temperature"></li>
+    <section>
+      <div class="weatherData-container">
+        <div>
+          <h1 id="city-name"></h1>
+          <img id="weather-icon" src="" alt="weather icon" />
 
-          <li id="humidity"></li>
+          <h3 id="temperature"></h3>
 
-          <li id="wind-speed"></li>
+          <p id="humidity"></p>
 
-          <li id="uvDiv">
+          <p id="wind-speed"></p>
+
+          <div id="uvDiv">
             UV Index:
             <p id="uv-index"></p>
-          </li>
-        </ul>
+          </div>
+        </div>
+        <!-- <div> -->
+        <!-- <img id="weather-icon" src="" alt="weather icon" /> -->
+        <!-- </div> -->
       </div>
-      <div class="col-sm-6">
-        <img id="weather-icon" src="" alt="weather icon" />
-      </div>
-    </div>
+    </section>
 
     <form>
       <div class="city-list-style">
