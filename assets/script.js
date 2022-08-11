@@ -102,6 +102,7 @@ searchBtn.on("click", function (event) {
   uvIndex.removeClass("green yellow orange red");
   displayCityWeather(citySearch);
   renderCities();
+  document.getElementById("myForm").reset();
 });
 
 // The previously searched cities will be appended to a ul list

@@ -18,7 +18,7 @@
   <body>
     <section>
       <div class="form-container">
-        <form>
+        <form id="myForm">
           <input id="city" type="text" required />
           <button id="search-btn" type="submit">
             <i class="fa fa-search"></i>
@@ -45,35 +45,22 @@
 
     <section>
       <div class="forecast-container">
+        <h3>Extended Forecast</h3>
         <div id="forecast"></div>
       </div>
     </section>
 
-    <form>
-      <div class="city-list-style">
-        <ul id="saved-cities" class="list-group list-group-flush"></ul>
-      </div>
-      <div id="clear-cities">
-        <button class="clearBtn" onclick="deleteItems()">Clear</button>
-      </div>
-    </form>
-
-    <!-- 5-Day Forecast-->
-    <!-- <form id="five-day-div" style="text-align: center">
-      <label
-        for="forecast"
-        style="
-          font-size: 28px;
-          color: white;
-          margin: 5px 0px 3px;
-          font-weight: bold;
-          text-shadow: 1px 2px black;
-          width: fit-content;
-        "
-        >5-Day Forecast</label
-      >
-      <div id="forecast"></div>
-    </form> -->
+    <section>
+      <form class="storage-container">
+        <h3>Recent searches</h3>
+        <div class="city-list-style">
+          <ul id="saved-cities" class="list-group list-group-flush"></ul>
+        </div>
+        <div id="clear-cities">
+          <button class="clearBtn" onclick="deleteItems()">Clear</button>
+        </div>
+      </form>
+    </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
