@@ -24,6 +24,7 @@ function displayCityWeather(city) {
     method: "GET",
   }).then(function (response) {
     // Output current date
+    console.log(response);
     var date = new Date(response.dt * 1000);
     var forecastDate =
       date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
@@ -32,7 +33,7 @@ function displayCityWeather(city) {
     // Output City name and weather icon
     var iconData = response.weather[0].icon;
     var weatherIconUrl = `https://openweathermap.org/img/wn/${iconData}@2x.png`;
-    cityName.text(response.name);
+    cityName.text((response.name) + ", " + (response.sys.country));
     $("#weather-icon").attr("src", weatherIconUrl);
 
     cityName.text(response.main.name);
@@ -82,7 +83,7 @@ function displayCityWeather(city) {
 
         // Create 5 cards that will display the weather forecast for 5 days.
         $("#forecast").append(
-          `<div id="forecast-card" class="card text-white bg-primary mb-3" style="max-width: 10rem;"><p class="card-text">${forecastDate}</p><img src="${forecastIconUrl}" id="five-day-icon"/><p class="card-text">${forecastTemp} \xB0F</p><p class="card-text"> Humidity: ${forecastHumidity} %</p></div>`
+          `<div id="forecast-card" class="card text-white bg-primary mb-3" style="max-width: 10rem;text-align: center;"><p class="card-text">${forecastDate}</p><img src="${forecastIconUrl}" id="five-day-icon"/><p class="card-text">${forecastTemp} \xB0F</p><p class="card-text"> Humidity: ${forecastHumidity} %</p></div>`
         );
       }
     });
