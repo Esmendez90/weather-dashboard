@@ -1,37 +1,36 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  background-image: linear-gradient(
-    to right,
-    #6685ad,
-    #c2c17b,
-    #6685ad,
-    #bbc96d,
-    #275970
-  );
+  /* background-image: linear-gradient( #0a577a, #0e77a8, #1399d6 ); */
+  background-color: rgb(130, 187, 240);
+  margin: 0;
 }
-
-.header {
-  text-align: center;
-  padding: 15px;
-  margin: auto;
-  height: 150px;
-  background-image: linear-gradient(
-    to bottom,
-    #0a577a,
-    #0e77a8,
-    #1399d6,
-    #0db1fd
-  );
-  border-style: solid;
-  border-color: white;
-  border-width: 10px;
+.form-container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }
-
+form {
+  position: relative;
+  background-color: transparent;
+}
+input {
+  width: 100%;
+  height: 22px;
+  background-color: #f2efef73;;
+  border: 1px solid #a5a4a4;
+  border-radius: 10px;
+}
+button {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  border: none;
+  padding: 0;
+  padding-top: 6px;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+/* 
 h1 {
   color: white;
   text-shadow: 2px 2px black;
@@ -117,26 +116,7 @@ h1 {
   text-shadow: 1px 1px black;
 }
 
-.current-city-data {
-  color: white;
-  text-shadow: 1px 2px black;
-  padding: 15px;
-  float: left;
-  clear: both;
-  border-style: solid;
-  border-color: rgb(236, 240, 243);
-  border-width: 10px;
-  background-image: linear-gradient(
-    to bottom,
-    #8eb8cc,
-    #0e77a8,
-    #4899be,
-    #82b3ca,
-    #0e77a8,
-    #92bacc,
-    #8ac1db
-  );
-}
+
 
 #uv-index {
   display: inline-block;
@@ -212,16 +192,4 @@ h1 {
 
 #five-day-icon {
   width: 135px;
-}
-
-@media only screen and (min-width: 300px) and (max-width: 770px) {
-  .current-city-data {
-    text-align: center;
-    float: none;
-    width: -webkit-fill-available;
-    margin: auto;
-    border-style: solid;
-    border-color: rgb(236, 240, 243);
-    border-width: 10px;
-  }
-}
+} */

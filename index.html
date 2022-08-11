@@ -11,89 +11,54 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-      crossorigin="anonymous"
-    />
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-      crossorigin="anonymous"
-    ></script>
-
     <link rel="stylesheet" href="assets/style.css" />
 
     <title>Weather Dashboard</title>
   </head>
 
   <body>
-    <header class="header"><h1>WEATHER DASHBOARD</h1></header>
-
-    <!-- Search city card -->
-
-    <form class="search-City-container">
-      <label
-        for="city"
-        style="
-          font-size: x-large;
-          color: rgb(67, 67, 131);
-          font-weight: bold;
-          text-shadow: 1px 1px white;
-        "
-        >Search City</label
-      >
-      <div>
-        <input id="city" type="text" name="city" placeholder="City Name" />
-
-        <button id="search-btn" type="search">
-          <i class="fa fa-search"></i>
-        </button>
+    <section>
+      <div class="row form-container">
+        <form>
+          <input id="city" type="text" required />
+          <button id="search-btn" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
       </div>
+    </section>
 
-      <!-- List of searched cities -->
-      <div>
-        <div class="city-list-style">
-          <!-- <div id="list-of-cities" class="card search-history" style="width: 20rem"> -->
-          <ul id="saved-cities" class="list-group list-group-flush"></ul>
-        </div>
-        <!-- </div> -->
-        <div id="clear-cities">
-          <button class="clearBtn" onclick="deleteItems()">Clear</button>
-        </div>
+    <div class="current-city-data row">
+      <div class="col-sm-6">
+        <ul>
+          <li id="temperature"></li>
+
+          <li id="humidity"></li>
+
+          <li id="wind-speed"></li>
+
+          <li id="uvDiv">
+            UV Index:
+            <p id="uv-index"></p>
+          </li>
+        </ul>
       </div>
-    </form>
-
-    <!-- Display city's current weather data card -->
-
-    <form class="current-city-data" style="width: auto">
-      <div style="text-align: center">
-        <label id="city-name" style="font-size: 25px">City Name</label>
-
-        <label id="current-date" style="font-size: 25px"></label>
-
-        <div>
-          <img id="weather-icon" style="width: 120px" src="" />
-        </div>
+      <div class="col-sm-6">
+        <img id="weather-icon" src="" alt="weather icon" />
       </div>
-      <div>
-        <div id="temperature" style="font-size: 22px"></div>
+    </div>
 
-        <div id="humidity" style="font-size: 21px"></div>
-
-        <div id="wind-speed" style="font-size: 20px"></div>
-
-        <div id="uvDiv" style="font-size: 19px">
-          UV Index:
-          <div id="uv-index"></div>
-        </div>
+    <form>
+      <div class="city-list-style">
+        <ul id="saved-cities" class="list-group list-group-flush"></ul>
+      </div>
+      <div id="clear-cities">
+        <button class="clearBtn" onclick="deleteItems()">Clear</button>
       </div>
     </form>
 
     <!-- 5-Day Forecast-->
-    <form id="five-day-div" style="text-align: center">
+    <!-- <form id="five-day-div" style="text-align: center">
       <label
         for="forecast"
         style="
@@ -107,9 +72,7 @@
         >5-Day Forecast</label
       >
       <div id="forecast"></div>
-    </form>
-
- 
+    </form> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
