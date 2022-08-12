@@ -9,7 +9,13 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     /> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="assets/style.css" />
 
     <title>Weather Dashboard</title>
@@ -28,14 +34,16 @@
     </section>
 
     <section>
-      <div class="weatherData-container">
+      <div class="weatherData-container" style="position: relative">
         <div>
           <h1 id="city-name"></h1>
-          <img id="weather-icon" src="" alt="weather icon" />
           <h3 id="temperature"></h3>
           <p><i class="fa-solid fa-droplet"></i><span id="humidity"></span></p>
           <p><i class="fa-solid fa-wind"></i><span id="wind-speed"></span></p>
-          <p><span id="uv-index"></span></p>
+          <p>UV index<span id="uv-index" style="margin-left: 5px"></span></p>
+        </div>
+        <div class="weatherIcon-container">
+          <img id="weather-icon" src="" alt="weather icon" />
         </div>
       </div>
     </section>

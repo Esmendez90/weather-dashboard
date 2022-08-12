@@ -72,7 +72,6 @@ function extendedForecast(response) {
       // let forecastDate =
       //   date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
       date = date.getDay();
-      console.log(date);
       if (date == 0) {
         date = "Sunday";
       } else if (date == 1) {
@@ -113,6 +112,9 @@ searchBtn.on("click", function (event) {
   event.preventDefault();
 
   let citySearch = cityInput.val().trim();
+  if (citySearch === ""){
+    alert("Enter a city name");
+  } else {
   let storage = JSON.parse(localStorage.getItem("city-weather"));
   storage.push(citySearch);
   localStorage.setItem("city-weather", JSON.stringify(storage));
@@ -121,6 +123,7 @@ searchBtn.on("click", function (event) {
   displayCityWeather(citySearch);
   renderCities();
   document.getElementById("myForm").reset();
+  }
 });
 
 // The previously searched cities will be appended to a ul list

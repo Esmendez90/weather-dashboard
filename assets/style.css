@@ -4,14 +4,12 @@ body {
 }
 
 .form-container {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  padding: 4rem;
 }
 form {
   position: relative;
   background-color: transparent;
+  margin: auto;
 }
 input {
   width: 100%;
@@ -36,10 +34,14 @@ i {
 .weatherData-container {
   padding: 2rem;
 }
-
+.weatherIcon-container{
+  position: absolute;
+    top: 12%;
+    right: 0%;
+    width: 200px;
+}
 #weather-icon {
-  float: right;
-  width: 33%;
+  width: 100%;
 }
 #city-name {
   width: fit-content;
@@ -78,6 +80,7 @@ p {
   border: 1px solid #ffffff63;
   border-radius: 10px;
   padding: 1rem;
+  text-align: center;
 }
 #forecast-card:not(:last-child) {
   margin-right: 1rem;
@@ -106,8 +109,7 @@ ul{
 .green, .yellow, .orange, .red {
   width: fit-content;
   border-radius: 15px;
-  padding: 5px;
-
+  padding: 0 5px;
 }
 .green{
   background-color: rgb(5, 206, 5);
@@ -122,4 +124,25 @@ ul{
 
 .red {
   background-color: red;
+}
+.weatherData-container p {
+  margin-top: 5px;
+}
+.fa-droplet{
+  color:#284df5;
+}
+.fa-wind{
+  color:#ffffffc4
+}
+
+@media screen and (min-width:768px){
+  #myForm {
+    width: 50%;
+  }
+  .weatherData-container, .storage-container {
+    padding: 2rem 8rem;
+  }
+  .weatherIcon-container {
+    right: 10%;
+  }
 }
