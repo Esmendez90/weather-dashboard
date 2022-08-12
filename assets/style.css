@@ -1,5 +1,4 @@
 body {
-  /* background-image: linear-gradient( #0a577a, #0e77a8, #1399d6 ); */
   background-color: rgb(130, 187, 240);
   margin: 0;
 }
@@ -104,166 +103,23 @@ ul{
   font-weight: bold;
   padding: 5px;
 }
-/* 
-h1 {
-  color: white;
-  text-shadow: 2px 2px black;
-  font-size: 50px;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-}
-
-.search-City-container {
-  background-image: url("https://dv-website.s3.amazonaws.com/uploads/2019/05/jz_csweather_060619.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  padding: 15px;
-  width: 100%;
-  margin: auto;
-  border-style: solid;
-  border-color: rgba(255, 255, 255, 0.658);
-  border-width: 10px;
-  text-align: center;
-}
-
-#city {
-  width: 40%;
-  height: 35px;
-  margin: 10px auto;
-  border-radius: 10px;
-  opacity: 0.5;
-  color: black;
-}
-
-#search-btn {
+.green, .yellow, .orange, .red {
   width: fit-content;
+  border-radius: 15px;
   padding: 5px;
-  height: 40px;
-  margin: auto;
-  border-radius: 10px;
-  opacity: 0.7;
+
 }
-
-.fa {
-  color: rgb(34, 34, 158);
-  font-size: 25px;
-  text-shadow: 2px 2px white;
-}
-
-.city-list-style {
-  width: fit-content;
-  height: auto;
-  margin: 0 auto;
-  padding: 10px;
-  position: relative;
-}
-
-#clear-cities {
-  width: fit-content;
-  height: 40px;
-  margin: auto;
-  opacity: 0.7;
-}
-
-.clearBtn {
-  padding: 5px;
-  border-radius: 10px;
-  color: rgb(49, 49, 97);
-  font-weight: solid;
-  text-shadow: 0.5px 0.5px black;
-  font-size: 20px;
-}
-
-.search-history {
-  margin: 10px 0px 0px;
-}
-
-.saved-city {
-  background: none;
-  font-weight: solid;
-  color: white;
-  text-shadow: 1px 1px black;
-}
-
-
-
-#uv-index {
-  display: inline-block;
-  padding: 2px 5px;
-  font-weight: bold;
-}
-
-.none {
-  background-color: none;
-}
-
-.green {
+.green{
   background-color: rgb(5, 206, 5);
-  border-radius: 3cm;
-  border-style: solid;
-  border-width: 3px;
-  border-color: rgb(23, 165, 23);
 }
-
 .yellow {
   background-color: yellow;
-  border-radius: 3cm;
-  border-style: solid;
-  border-width: 3px;
-  border-color: rgb(211, 211, 5);
 }
 
 .orange {
   background-color: orange;
-  border-radius: 3cm;
-  border-style: solid;
-  border-width: 3px;
-  border-color: rgb(218, 144, 7);
 }
 
 .red {
   background-color: red;
-  border-radius: 3cm;
-  border-style: solid;
-  border-width: 3px;
-  border-color: rgb(194, 13, 13);
 }
-
-#five-day-div {
-  overflow: auto;
-  width: auto;
-  background-image: linear-gradient(
-    to bottom,
-    #0a577a,
-    #0e77a8,
-    #1399d6,
-    #0db1fd
-  );
-  border-style: solid;
-  border-color: rgb(236, 240, 243);
-  border-width: 10px;
-}
-
-#forecast-card {
-  display: inline-block;
-  padding: 5px;
-  margin: 10px;
-  width: 216px;
-  text-align: center;
-  overflow: auto;
-}
-
-.card-text {
-  margin: auto;
-  font-size: 20px;
-  text-shadow: 2px 2px black;
-}
-
-#five-day-icon {
-  width: 135px;
-} */
