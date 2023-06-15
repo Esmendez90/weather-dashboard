@@ -18,15 +18,19 @@
   </head>
 
   <body>
+    <!-- header -->
     <header>
-      <h1>
-        Weather Dashboard
-      </h1>
+      <h1>Weather Dashboard</h1>
     </header>
     <main>
       <section>
         <form>
-          <input id="city" type="text" placeholder="Enter city name..."required />
+          <input
+            id="city"
+            type="text"
+            placeholder="Enter city name..."
+            required
+          />
           <button id="search-btn" type="submit">
             <i class="fa fa-search"></i>
           </button>
@@ -35,27 +39,28 @@
 
       <!-- city weather container -->
       <section>
-        <div class="row">
-          <div class="column">
+        <div class="weather-data-container">
+          <div>
+            <div>
+              <img id="weather-icon" src="" alt="weather icon" />
+            </div>
             <ul>
-
+              <li id="temperature">70 F</li>
               <li id="city-name">
+                NEW YORK
                 <i class="fa-solid fa-star"></i>
               </li>
-              <li id="temperature"></li>
 
               <li>
-                <i class="fa-solid fa-droplet"></i><span id="humidity"></span>
+                <i class="fa-solid fa-droplet"></i><span id="humidity"></span>40%
               </li>
               <li>
-                <i class="fa-solid fa-wind"></i><span id="wind-speed"></span>
+                <i class="fa-solid fa-wind"></i><span id="wind-speed"></span>34mph
               </li>
-              <li><i class="fa-solid fa-sun"></i><span id="uv-index"></span></li>
+              <li>
+                <i class="fa-solid fa-sun"></i><span id="uv-index"></span>12
+              </li>
             </ul>
-          </div>
-
-          <div class="column">
-            <img id="weather-icon" src="" alt="weather icon" />
           </div>
         </div>
       </section>
