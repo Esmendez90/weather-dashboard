@@ -1,6 +1,32 @@
-body {
-  background-color: rgb(130, 187, 240);
+header, form {
+  text-align: center;
+}
+
+input {
+  width: 50%;
+  height: 25px;
+}
+#search-btn {
+  width: 48px;
+  height: 29px;
+  background-color: #77abce;
+}
+input, #search-btn{
+  border-radius: 5px;
+}
+.fa-search {
+  color: white;
+}
+
+
+/*body {
+ 
+  background-image: url('/assets/images/pexels-eberhard-grossgasteiger-2098427.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
   margin: 0;
+  color: white;
 }
 
 .form-container {
@@ -34,12 +60,12 @@ i {
 .weatherData-container {
   padding: 2rem;
 }
-.weatherIcon-container{
+/* .weatherIcon-container{
   position: absolute;
     top: 12%;
     right: 0%;
     width: 200px;
-}
+} 
 #weather-icon {
   width: 100%;
 }
@@ -65,7 +91,7 @@ p {
 }
 .forecast-container {
   padding: 2rem;
-  background-color: #b5cff145;
+  background-color: #25252559;
 }
 .forecast-container h3, .storage-container h3 {
   font-size: 19px;
@@ -145,4 +171,5 @@ ul{
   .weatherIcon-container {
     right: 10%;
   }
-}
+}*/
+
