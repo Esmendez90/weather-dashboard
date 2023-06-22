@@ -1,3 +1,19 @@
+let inputName = document.getElementById("inputCity");
+let btn = document.getElementById("search-btn");
+
+btn.addEventListener("click", getWeatherData);
+
+function getWeatherData (e) {
+  e.preventDefault();
+  let cityName = inputName.value
+  console.log(cityName);
+  // getWeatherData(cityName);
+  
+};
+
+
+
+
 // let cityInput = $("#city");
 // let searchBtn = $("#search-btn");
 // let cityName = $("#city-name");
