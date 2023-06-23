@@ -1,18 +1,52 @@
 let inputName = document.getElementById("inputCity");
 let btn = document.getElementById("search-btn");
+let myForm = document.getElementById("myForm");
+let apiKey = "2f1c1bf2f40bf4e0bff9c4a2bf0f5904";
 
-btn.addEventListener("click", getWeatherData);
+btn.addEventListener("click", getCityName);
 
-function getWeatherData (e) {
+function getCityName(e) {
   e.preventDefault();
-  let cityName = inputName.value
-  console.log(cityName);
-  // getWeatherData(cityName);
-  
+
+  let cityName = inputName.value.trim();
+
+  if (cityName) {
+    // console.log(cityName);
+    getWeatherData(cityName);
+    myForm.reset();
+  } else {
+    alert("Please, enter a valid city name.");
+  }
+}
+
+function getWeatherData(cityName) {
+  console.log("City: ", cityName);
+  let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=${apiKey}`;
+
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    getTodaysDate(response.dt);
+    getWeatherIcon(response.weather[0].icon);
+  });
+}
+
+function getTodaysDate(dt) {
+  // console.log("Date: ", currentDate);
+  let date = new Date(dt * 1000);
+  let todaysDate =
+    date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
+  console.log(todaysDate);
 };
 
-
-
+function getWeatherIcon (icon) {
+  // let iconData = response.weather[0].icon;
+  let weatherIconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+  console.log("Weateher icon: ", weatherIconUrl);
+  
+};
 
 // let cityInput = $("#city");
 // let searchBtn = $("#search-btn");
@@ -30,7 +64,7 @@ function getWeatherData (e) {
 
 //   $("#forecast").empty();
 //    let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
-  
+
 //   $.ajax({
 //     url: queryURL,
 //     method: "GET",
@@ -44,13 +78,13 @@ function getWeatherData (e) {
 // function renderCurrentWeather(response) {
 //   // Get date
 //   let date = new Date(response.dt * 1000);
-//   let forecastDate =
+//   let todaysDate =
 //     date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
 
 //   let iconData = response.weather[0].icon;
 //   let weatherIconUrl = `https://openweathermap.org/img/wn/${iconData}@2x.png`;
 
-//   $("#current-date").text(`(${forecastDate})`);
+//   $("#current-date").text(`(${todaysDate})`);
 //   cityName.text(response.name + ", " + response.sys.country);
 //   $("#weather-icon").attr("src", weatherIconUrl);
 //   cityName.text(response.main.name);
@@ -87,7 +121,7 @@ function getWeatherData (e) {
 //     // for loop that will get us the 5 day weather forecast
 //     for (let i = 1; i < 6; i++) {
 //       let date = new Date(response.daily[i].dt * 1000);
-//       // let forecastDate =
+//       // let todaysDate =
 //       //   date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
 //       date = date.getDay();
 //       if (date == 0) {
@@ -105,7 +139,7 @@ function getWeatherData (e) {
 //       } else if (date == 6) {
 //         date = "Saturday";
 //       }
-//       // console.log(forecastDate);
+//       // console.log(todaysDate);
 //       let forecastIcon = response.daily[i].weather[0].icon;
 //       let forecastIconUrl = `https://openweathermap.org/img/wn/${forecastIcon}@2x.png`;
 //       let forecastTemp = Math.trunc(response.daily[i].temp.day);
@@ -126,7 +160,7 @@ function getWeatherData (e) {
 // }
 // // When the user clicks on the search button then the user input will be stored in local storage
 // // The city's data will be rendered on the page.
-// searchBtn.on("submit",getCityData); 
+// searchBtn.on("submit",getCityData);
 
 // function getCityData (e) {
 //   e.preventDefault();
@@ -181,8 +215,6 @@ function getWeatherData (e) {
 // function deleteItems() {
 //   localStorage.clear();
 // };
-
-
 
 // renderCities();
 // displayCityWeather("new york");
