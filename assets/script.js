@@ -2,6 +2,18 @@ let inputName = document.getElementById("inputCity");
 let btn = document.getElementById("search-btn");
 let myForm = document.getElementById("myForm");
 let apiKey = "2f1c1bf2f40bf4e0bff9c4a2bf0f5904";
+let placeName;
+let countryName;
+let weatherDescription;
+let temperature;
+let feelsLike;
+let maxTemp;
+let minTemp;
+let humidity;
+let windSpeed;
+let todaysDate;
+let weatherIconUrl;
+let uvIndexValue;
 
 btn.addEventListener("click", getCityName);
 
@@ -11,7 +23,6 @@ function getCityName(e) {
   let cityName = inputName.value.trim();
 
   if (cityName) {
-    // console.log(cityName);
     getWeatherData(cityName);
     myForm.reset();
   } else {
@@ -28,37 +39,69 @@ function getWeatherData(cityName) {
     method: "GET",
   }).then(function (response) {
     console.log(response);
+    placeName = response.name;
+    countryName = response.sys.country;
+    weatherDescription = response.weather[0].description;
+    temperature = response.main.temp;
+    feelsLike = response.main.feels_like;
+    maxTemp = response.main.temp_max;
+    minTemp = response.main.temp_min;
+    humidity = response.main.humidity;
+    windSpeed = response.wind.speed;
+
     getTodaysDate(response.dt);
     getWeatherIcon(response.weather[0].icon);
+    getUvIndex(response.coord.lat, response.coord.lon);
+  });
+}
+
+function getUvIndex(...data) {
+  let oneCallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${data[0]}&lon=${data[1]}&appid=${apiKey}&units=imperial`;
+
+  $.ajax({
+    url: oneCallURL,
+    method: "GET",
+  }).then(function (response) {
+    uvIndexValue = Math.trunc(response.current.uvi);
+// console.log(uvIndexValue)
+    renderWeatherData();
   });
 }
 
 function getTodaysDate(dt) {
-  // console.log("Date: ", currentDate);
   let date = new Date(dt * 1000);
-  let todaysDate =
-    date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
+  console.log(date);
+  todaysDate = String(date);
+  todaysDate = todaysDate.substring(4,15);
   console.log(todaysDate);
-};
+  // todaysDate =
+  //   date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
+}
 
-function getWeatherIcon (icon) {
-  // let iconData = response.weather[0].icon;
-  let weatherIconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-  console.log("Weateher icon: ", weatherIconUrl);
-  
-};
+function getWeatherIcon(icon) {
+  weatherIconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+}
 
-// let cityInput = $("#city");
-// let searchBtn = $("#search-btn");
-// let cityName = $("#city-name");
-// let cityTemp = $("#temperature");
-// let humidity = $("#humidity");
-// let windSpeed = $("#wind-speed");
-// let uvIndex = $("#uv-index");
-// let ulTag = $("#saved-cities");
-// let apiKey = "2f1c1bf2f40bf4e0bff9c4a2bf0f5904";
+function renderWeatherData() {
+  let tempValues = [temperature, maxTemp, minTemp, feelsLike];
+  let temps = tempValues.map((values) => Math.trunc(values) + "\xB0");
 
-// // Displays weather data
+  //  console.log("description ", weatherDescription);
+  $("#city-name, #country-name").text(`${placeName}, ${countryName}`);
+  $("#weather-description").text(`${weatherDescription}`);
+  $("#weather-icon").attr("src", weatherIconUrl);
+  $("#current-date").text(`${todaysDate}`);
+  $("#feels-like").text(` feels like ${temps[3]}`);
+  $("#temperature").text(`${temps[0]}`);
+  $("#max-min-temp").text(`max ${temps[1]} / min ${temps[2]}`);
+  $("#humidity").text(`${humidity}%`);
+  $("#wind-speed").text(`${windSpeed} mph`);
+  $("#uv-index").text(`${uvIndexValue} UV Index`);
+}
+
+
+
+
 
 // function displayCityWeather(city) {
 

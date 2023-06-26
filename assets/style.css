@@ -43,8 +43,8 @@ input,
 .fa-search {
   color: black;
 }
-.weather-data-container{
-  text-align:center;
+.data-container{
+  /* text-align:center; */
   margin: 5%;
   padding: 1rem;
 }
@@ -61,21 +61,7 @@ input,
   justify-content: center;
   align-items: center;
 }
-.weather-data-container ul li:nth-child(3){
-  font-size: 19px;
-  margin-top: 8px;
-  margin-left: -100px;
-}
-.weather-data-container ul li:nth-child(4){
-  font-size: 19px;
-  margin-top: 8px;
-  margin-left: -75px;
-}
-.weather-data-container ul li:nth-child(5){
-  font-size: 19px;
-  margin-top: 8px;
-  margin-left: -110px;
-}
+
 .weather-data-container ul li i {
   margin: 3px;
 }
