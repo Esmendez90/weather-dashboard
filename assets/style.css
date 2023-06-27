@@ -89,12 +89,28 @@ input,
 }
 .fa-droplet {
   color: #00ccff;
+  margin-top: 18px;
 }
 .fa-wind {
   color: #fef7f7;
 }
-.fa-sun {
+/* .fa-sun {
   color: #ffc707;
+} */
+
+.sun-container{
+  display: flex;
+}
+.sun-container-sunrise, .sun-container-sunset{
+  width: 48%;
+  height: 55px;
+  background-color: white;
+  color: #465694;
+  margin: 6px auto;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 .fa-sun-sunrise,
 .fa-arrow-up {
@@ -110,13 +126,19 @@ input,
   width: fit-content;
   height: 10px;
   overflow: hidden;
+  font-size: 22px;
 }
-.fa-arrow-up,
+#sunrise-time, #sunset-time {
+  padding-left: 9px;
+  width: 50%;
+  text-align: center;
+}
+/* .fa-arrow-up,
 .fa-arrow-down {
   margin: 0;
   margin-left: -5px !important;
   font-size: 14px;
-}
+} */
 
 /*body {
  
