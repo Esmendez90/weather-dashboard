@@ -14,6 +14,8 @@ let windSpeed;
 let todaysDate;
 let weatherIconUrl;
 let uvIndexValue;
+let sunriseTime;
+let sunsetTime;
 
 btn.addEventListener("click", getCityName);
 
@@ -49,7 +51,7 @@ function getWeatherData(cityName) {
     humidity = response.main.humidity;
     windSpeed = response.wind.speed;
 
-    getTodaysDate(response.dt);
+    getTodaysDate(response.dt, response.sys.sunrise, response.sys.sunset);
     getWeatherIcon(response.weather[0].icon);
     getUvIndex(response.coord.lat, response.coord.lon);
   });
@@ -63,19 +65,30 @@ function getUvIndex(...data) {
     method: "GET",
   }).then(function (response) {
     uvIndexValue = Math.trunc(response.current.uvi);
-// console.log(uvIndexValue)
+    console.log(uvIndexValue);
+
+    if (uvIndexValue < 3) {
+      $("#uv-index-icon").css("color", "#4caf50");
+    } else if ((uvIndexValue > 2) && (uvIndexValue < 8)) {
+      $("#uv-index-icon").css("color", "#ffeb3b");
+    } else if (uvIndexValue > 8) {
+      $("#uv-index-icon").css("color", "#e91e1e");
+    }
+
+
     renderWeatherData();
   });
 }
 
-function getTodaysDate(dt) {
-  let date = new Date(dt * 1000);
-  console.log(date);
-  todaysDate = String(date);
-  todaysDate = todaysDate.substring(4,15);
-  console.log(todaysDate);
-  // todaysDate =
-  //   date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
+function getTodaysDate(dt, sunrise, sunset) {
+  let date = String(new Date(dt * 1000));
+  todaysDate = date.substring(4, 15);
+
+  let sunriseConvertTime = String(new Date(sunrise * 1000));
+  sunriseTime = sunriseConvertTime.substring(17, 21);
+
+  let sunsetConvertTime = String(new Date(sunset * 1000));
+  sunsetTime = sunsetConvertTime.substring(16, 21);
 }
 
 function getWeatherIcon(icon) {
@@ -92,16 +105,14 @@ function renderWeatherData() {
   $("#weather-icon").attr("src", weatherIconUrl);
   $("#current-date").text(`${todaysDate}`);
   $("#feels-like").text(` feels like ${temps[3]}`);
-  $("#temperature").text(`${temps[0]}`);
+  $("#temperature").text(`${temps[0]} F`);
   $("#max-min-temp").text(`max ${temps[1]} / min ${temps[2]}`);
-  $("#humidity").text(`${humidity}%`);
-  $("#wind-speed").text(`${windSpeed} mph`);
-  $("#uv-index").text(`${uvIndexValue} UV Index`);
+  $("#humidity").text(` ${humidity}% humidity`);
+  $("#wind-speed").text(` ${windSpeed} mph`);
+  $("#uv-index").text(` ${uvIndexValue} UV index`);
+  $("#sunrise-time").text(` ${sunriseTime} sunrise`);
+  $("#sunset-time").text(` ${sunsetTime} sunset`);
 }
-
-
-
-
 
 // function displayCityWeather(city) {
 

@@ -3,20 +3,17 @@ body {
   height: 100vh;
   background-image: linear-gradient(
     to top,
-    
-    
-    
-    #677bc6, 
+
+    #677bc6,
     #4351ae,
-    #334173,
+    #465694,
     #28335c
   );
   margin: 0;
   color: white;
 }
-header h1{
+header h1 {
   letter-spacing: 1.3px;
-
 }
 header,
 form {
@@ -25,7 +22,7 @@ form {
 
 input {
   width: 206px;
-  height: 32px;
+  height: 36px;
 }
 #search-btn {
   width: 48px;
@@ -43,7 +40,7 @@ input,
 .fa-search {
   color: black;
 }
-.data-container{
+.data-container {
   /* text-align:center; */
   margin: 5%;
   padding: 1rem;
@@ -51,32 +48,74 @@ input,
 .weather-data-container ul {
   list-style-type: none;
   padding: 0;
-  font-size: 26px;
+  font-size: 19px;
 }
 .weather-data-container ul li {
-  margin: 1px auto;
+  margin: 6px auto;
 }
-#city-name{
+#city-name {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 0;
+}
+#current-date {
+  text-align: center;
+  margin: 0;
 }
 
+#weather-description {
+  text-align: center;
+  margin: 0;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+#weather-icon {
+  display: flex;
+  margin: auto;
+}
+#temperature {
+  font-size: 34px;
+}
 .weather-data-container ul li i {
   margin: 3px;
 }
-.fa-star{
-  color:#f4b500;
+.fa-star {
+  color: #f4b500;
   font-size: 16px;
+  clear: right;
+  float: left;
 }
 .fa-droplet {
   color: #00ccff;
 }
-.fa-wind{
-  color:#fef7f7;
+.fa-wind {
+  color: #fef7f7;
 }
-.fa-sun{
+.fa-sun {
   color: #ffc707;
+}
+.fa-sun-sunrise,
+.fa-arrow-up {
+  color: #ffc707;
+}
+.fa-sun-sunset,
+.fa-arrow-down {
+  color: #ff9507;
+}
+
+.fa-sun-sunrise,
+.fa-sun-sunset {
+  width: fit-content;
+  height: 10px;
+  overflow: hidden;
+}
+.fa-arrow-up,
+.fa-arrow-down {
+  margin: 0;
+  margin-left: -5px !important;
+  font-size: 14px;
 }
 
 /*body {
