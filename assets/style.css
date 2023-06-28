@@ -136,19 +136,21 @@ input,
   width: 50%;
   text-align: center;
 }
-.hourly-forecast-container {
+.hourly-forecast-container, .forecast-container {
   display: grid;
 }
-#hourly-forecast {
+#hourly-forecast, #forecast {
   display: inline-flex;
   overflow-x: auto;
   overflow-y: hidden;
+}
+#hourly-forecast{
   background-color: #677bc6ad;
   padding: 25px 0;
   border-radius: 5px;
 }
 
-#hourly-card {
+#hourly-card, #forecast-card {
   margin: 0;
   background-color: rgba(255, 255, 255, 0.052);
   color: rgba(255, 255, 255, 0.904);

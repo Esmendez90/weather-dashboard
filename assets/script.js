@@ -77,6 +77,7 @@ function getUvIndex(...data) {
 
     getHourlyWeather(response.hourly);
     renderWeatherData();
+    extendedForecast(response);
   });
 }
 
@@ -128,15 +129,12 @@ function getHourlyWeather(data) {
     let hourlyTemp = Math.trunc(data[i].temp);
 
     let hourlyIcon = `https://openweathermap.org/img/wn/${data[i].weather[0].icon}@2x.png`;
-    console.log(hourlyIcon);
-
-
+    // console.log(hourlyIcon);
 
     $("#hourly-forecast").append(
       `<div id="hourly-card">
-                  <p>${hourly}</p>
-                 
-                 <p style="margin-bottom: 3px">${hourlyTemp}\xB0</p>
+                <p>${hourly}</p>
+                 <p style="margin-bottom: 5px">${hourlyTemp}\xB0</p>
                  <div class="hourly-icon-container">
                  <img id="hourly-weather-icon" src="${hourlyIcon}" alt="hourly weather icon" />
                 <div>
@@ -146,10 +144,54 @@ function getHourlyWeather(data) {
   }
 }
 
+function extendedForecast(data) {
+  console.log(data);
+  // for loop that will get us the 5 day weather forecast
+  for (let i = 1; i < 8; i++) {
+    let date = new Date(data.daily[i].dt * 1000);
+    //  let todaysDate =
+    //    date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
+    date = date.getDay();
+    if (date == 0) {
+      date = "Sunday";
+    } else if (date == 1) {
+      date = "Monday";
+    } else if (date == 2) {
+      date = "Tuesday";
+    } else if (date == 3) {
+      date = "Wednesday";
+    } else if (date == 4) {
+      date = "Thursday";
+    } else if (date == 5) {
+      date = "Friday";
+    } else if (date == 6) {
+      date = "Saturday";
+    }
+
+    let forecastIcon = data.daily[i].weather[0].icon;
+    let forecastIconUrl = `https://openweathermap.org/img/wn/${forecastIcon}@2x.png`;
+    let forecastTemp = Math.trunc(data.daily[i].temp.day);
+    let forecastHumidity = data.daily[i].humidity;
+
+    // Create 5 cards that will display the weather forecast for 5 days.
+    $("#forecast").append(
+      `<div id="forecast-card">
+            <p style="font-size:20px; letter-spacing:0.5px">${date}</p>
+            
+           <p style="margin-bottom:0;">${forecastTemp}\xB0</p>
+           <div class="forecast-icon-container">
+           
+           <img src="${forecastIconUrl}" alt="forecast weather icon"/>
+           </div>
+           <p style="margin-top: 0px;"><i class="fa-solid fa-droplet"></i> ${forecastHumidity}%</p>
+        </div>
+        `
+    );
+  }
+}
+
 function getWeatherIcon(icon) {
   weatherIconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-
-  console.log(weatherIconUrl);
 }
 
 // function extendedForecast(response) {
