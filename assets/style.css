@@ -1,6 +1,6 @@
 body {
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
   background-image: linear-gradient(
     to top,
 
@@ -89,19 +89,17 @@ input,
 }
 .fa-droplet {
   color: #00ccff;
-  margin-top: 18px;
+  margin-top: 18px !important;
 }
 .fa-wind {
   color: #fef7f7;
 }
-/* .fa-sun {
-  color: #ffc707;
-} */
 
-.sun-container{
+.sun-container {
   display: flex;
 }
-.sun-container-sunrise, .sun-container-sunset{
+.sun-container-sunrise,
+.sun-container-sunset {
   width: 48%;
   height: 55px;
   background-color: white;
@@ -128,10 +126,31 @@ input,
   overflow: hidden;
   font-size: 22px;
 }
-#sunrise-time, #sunset-time {
+#sunrise-time,
+#sunset-time {
   padding-left: 9px;
   width: 50%;
   text-align: center;
+}
+.hourly-forecast-container {
+  display: grid;
+}
+#hourly-forecast {
+  display: inline-flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: #677bc6ad;
+  padding: 25px 0;
+  border-radius: 5px;
+}
+
+#hourly-card {
+  margin: 0 10px;
+  background-color: white;
+  color: #465694;
+  padding: 0 10px;
+  text-align: center;
+  border-radius: 5px;
 }
 /* .fa-arrow-up,
 .fa-arrow-down {
