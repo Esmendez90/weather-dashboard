@@ -12,6 +12,10 @@ body {
   margin: 0;
   color: white;
 }
+h3,
+#city-name {
+  letter-spacing: 0.5px;
+}
 header h1 {
   letter-spacing: 1.3px;
 }
@@ -145,13 +149,22 @@ input,
 }
 
 #hourly-card {
-  margin: 0 10px;
-  background-color: white;
-  color: #465694;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.052);
+  color: rgba(255, 255, 255, 0.904);
   padding: 0 10px;
   text-align: center;
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
+.hourly-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#hourly-weather-icon {
+  width: 100%;
+}
+
 /* .fa-arrow-up,
 .fa-arrow-down {
   margin: 0;

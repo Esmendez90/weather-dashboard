@@ -91,12 +91,6 @@ function getTodaysDate(dt, sunrise, sunset) {
   sunsetTime = sunsetConvertTime.substring(16, 21);
 }
 
-function getWeatherIcon(icon) {
-  weatherIconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-
-  console.log(weatherIconUrl);
-}
-
 function renderWeatherData() {
   let tempValues = [temperature, maxTemp, minTemp, feelsLike];
   let temps = tempValues.map((values) => Math.trunc(values) + "\xB0");
@@ -110,34 +104,52 @@ function renderWeatherData() {
   $("#temperature").text(`${temps[0]} F`);
   $("#max-min-temp").text(`max ${temps[1]} / min ${temps[2]}`);
   $("#humidity").text(` ${humidity}% humidity`);
-  $("#wind-speed").text(` ${windSpeed} mph`);
+  $("#wind-speed").text(` ${windSpeed} mph wind speed`);
   $("#uv-index").text(` ${uvIndexValue} UV index`);
   $("#sunrise-time").text(` ${sunriseTime} sunrise`);
   $("#sunset-time").text(` ${sunsetTime} sunset`);
 }
 
 function getHourlyWeather(data) {
-  console.log(data);
-  for (let i = 0; i < 12; i++) {
+  $("#hourly-forecast").empty();
+  // console.log(data);
+  for (let i = 0; i < 13; i++) {
     let hours = new Date(data[i].dt * 1000);
+    let hourly = hours.getHours();
 
-    let hourly = hours.getHours() + ":" + hours.getMinutes();
+    if (hourly > "12") {
+      hourly = hourly - 12 + "PM";
+    } else if (hourly == "12") {
+      hourly = hourly + "PM";
+    } else {
+      hourly = hourly + "AM";
+    }
 
     let hourlyTemp = Math.trunc(data[i].temp);
+
+    let hourlyIcon = `https://openweathermap.org/img/wn/${data[i].weather[0].icon}@2x.png`;
+    console.log(hourlyIcon);
+
+
 
     $("#hourly-forecast").append(
       `<div id="hourly-card">
                   <p>${hourly}</p>
                  
-                 <p>${hourlyTemp}\xB0</p>
-                
+                 <p style="margin-bottom: 3px">${hourlyTemp}\xB0</p>
+                 <div class="hourly-icon-container">
+                 <img id="hourly-weather-icon" src="${hourlyIcon}" alt="hourly weather icon" />
+                <div>
               </div>
               `
     );
-
-    console.log(hourly, hourlyTemp);
-    // let hourlyIcon = data[i].weather[0].icon;
   }
+}
+
+function getWeatherIcon(icon) {
+  weatherIconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+
+  console.log(weatherIconUrl);
 }
 
 // function extendedForecast(response) {
