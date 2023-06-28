@@ -25,6 +25,7 @@ function getCityName(e) {
   let cityName = inputName.value.trim();
 
   if (cityName) {
+    // storedCities(cityName);
     getWeatherData(cityName);
     myForm.reset();
   } else {
@@ -33,28 +34,40 @@ function getCityName(e) {
 }
 
 function getWeatherData(cityName) {
-  console.log("City: ", cityName);
+  // console.log("City: ", cityName);
   let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=${apiKey}`;
 
   $.ajax({
     url: queryURL,
     method: "GET",
-  }).then(function (response) {
-    // console.log(response);
-    placeName = response.name;
-    countryName = response.sys.country;
-    weatherDescription = response.weather[0].description;
-    temperature = response.main.temp;
-    feelsLike = response.main.feels_like;
-    maxTemp = response.main.temp_max;
-    minTemp = response.main.temp_min;
-    humidity = response.main.humidity;
-    windSpeed = response.wind.speed;
+    success: function (response) {
+      if (response) {
+      
+        placeName = response.name;
+        countryName = response.sys.country;
+        weatherDescription = response.weather[0].description;
+        temperature = response.main.temp;
+        feelsLike = response.main.feels_like;
+        maxTemp = response.main.temp_max;
+        minTemp = response.main.temp_min;
+        humidity = response.main.humidity;
+        windSpeed = response.wind.speed;
 
-    getTodaysDate(response.dt, response.sys.sunrise, response.sys.sunset);
-    getWeatherIcon(response.weather[0].icon);
-    getUvIndex(response.coord.lat, response.coord.lon);
+        getTodaysDate(response.dt, response.sys.sunrise, response.sys.sunset);
+        getWeatherIcon(response.weather[0].icon);
+        getUvIndex(response.coord.lat, response.coord.lon);
+        storedCities(cityName);
+        renderStoredCityNames();
+      }
+    },
+    error: function () {
+      alert("Error code 404. Request not found. Please, check your spelling and try again.");
+    },
+
+   
   });
+
+ 
 }
 
 function getUvIndex(...data) {
@@ -146,7 +159,7 @@ function getHourlyWeather(data) {
 
 function extendedForecast(data) {
   $("#forecast").empty();
-  console.log(data);
+  // console.log(data);
   // for loop that will get us the 5 day weather forecast
   for (let i = 1; i < 8; i++) {
     let date = new Date(data.daily[i].dt * 1000);
@@ -195,71 +208,33 @@ function getWeatherIcon(icon) {
   weatherIconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 }
 
-// function extendedForecast(response) {
-//   let latitude = response.coord.lat;
-//   let longitude = response.coord.lon;
-//   let oneCallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=imperial`;
+function storedCities(cityName) {
+  console.log("Store: ", cityName);
+  let storage = JSON.parse(localStorage.getItem("stored-city-names"));
+  storage.push(cityName);
+  localStorage.setItem("stored-city-names", JSON.stringify(storage));
+}
 
-//   $.ajax({
-//     url: oneCallURL,
-//     method: "GET",
-//   }).then(function (response) {
-//     // console.log(response);
-//     // UV index color
-//     let uvIndexValue = Math.trunc(response.current.uvi);
-//     // UV index value display on page
-//     uvIndex.text(uvIndexValue);
+function renderStoredCityNames() {
+  $("#saved-cities").empty();
 
-//     if (uvIndexValue >= 0 && uvIndexValue < 3) {
-//       uvIndex.addClass("green");
-//     } else if (uvIndexValue >= 3 && uvIndexValue < 6) {
-//       uvIndex.addClass("yellow");
-//     } else if (uvIndexValue >= 6 && uvIndexValue < 8) {
-//       uvIndex.addClass("orange");
-//     } else {
-//       uvIndex.addClass("red");
-//     }
+  let storage = JSON.parse(localStorage.getItem("stored-city-names"));
+  console.log(storage);
+  for (let i = 0; i < storage.length; i++) {
+    // let liTag = $("<li>");
+    // liTag.addClass("list-group-item saved-city");
+    // liTag.attr("id", i);
+    // ulTag.append(liTag);
+    // $("#" + i).text(storage[i]);
+  }
+}
 
-//     // for loop that will get us the 5 day weather forecast
-//     for (let i = 1; i < 6; i++) {
-//       let date = new Date(response.daily[i].dt * 1000);
-//       // let todaysDate =
-//       //   date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
-//       date = date.getDay();
-//       if (date == 0) {
-//         date = "Sunday";
-//       } else if (date == 1) {
-//         date = "Monday";
-//       } else if (date == 2) {
-//         date = "Tuesday";
-//       } else if (date == 3) {
-//         date = "Wednesday";
-//       } else if (date == 4) {
-//         date = "Thursday";
-//       } else if (date == 5) {
-//         date = "Friday";
-//       } else if (date == 6) {
-//         date = "Saturday";
-//       }
-//       // console.log(todaysDate);
-//       let forecastIcon = response.daily[i].weather[0].icon;
-//       let forecastIconUrl = `https://openweathermap.org/img/wn/${forecastIcon}@2x.png`;
-//       let forecastTemp = Math.trunc(response.daily[i].temp.day);
-//       let forecastHumidity = response.daily[i].humidity;
+if (localStorage.getItem("stored-city-names") === null) {
+  localStorage.setItem("stored-city-names", JSON.stringify([]));
+}
 
-//       // Create 5 cards that will display the weather forecast for 5 days.
-//       $("#forecast").append(
-//         `<div id="forecast-card">
-//             <p>${date}</p>
-//             <img src="${forecastIconUrl}" alt="forecast weather icon"/>
-//            <p>${forecastTemp}\xB0F</p>
-//            <p><i class="fa-solid fa-droplet"></i> ${forecastHumidity}%</p>
-//         </div>
-//         `
-//       );
-//     }
-//   });
-// }
+renderStoredCityNames();
+
 // // When the user clicks on the search button then the user input will be stored in local storage
 // // The city's data will be rendered on the page.
 // searchBtn.on("submit",getCityData);
