@@ -25,7 +25,6 @@ function getCityName(e) {
   let cityName = inputName.value.trim();
 
   if (cityName) {
-    // storedCities(cityName);
     getWeatherData(cityName);
     myForm.reset();
   } else {
@@ -42,7 +41,6 @@ function getWeatherData(cityName) {
     method: "GET",
     success: function (response) {
       if (response) {
-      
         placeName = response.name;
         countryName = response.sys.country;
         weatherDescription = response.weather[0].description;
@@ -57,17 +55,14 @@ function getWeatherData(cityName) {
         getWeatherIcon(response.weather[0].icon);
         getUvIndex(response.coord.lat, response.coord.lon);
         storedCities(cityName);
-        renderStoredCityNames();
       }
     },
     error: function () {
-      alert("Error code 404. Request not found. Please, check your spelling and try again.");
+      alert(
+        "Error code 404. Request not found. Please, check your spelling and try again."
+      );
     },
-
-   
   });
-
- 
 }
 
 function getUvIndex(...data) {
@@ -209,10 +204,12 @@ function getWeatherIcon(icon) {
 }
 
 function storedCities(cityName) {
-  console.log("Store: ", cityName);
+  //console.log("Store: ", cityName);
   let storage = JSON.parse(localStorage.getItem("stored-city-names"));
   storage.push(cityName);
   localStorage.setItem("stored-city-names", JSON.stringify(storage));
+
+  renderStoredCityNames();
 }
 
 function renderStoredCityNames() {
@@ -221,11 +218,12 @@ function renderStoredCityNames() {
   let storage = JSON.parse(localStorage.getItem("stored-city-names"));
   console.log(storage);
   for (let i = 0; i < storage.length; i++) {
-    // let liTag = $("<li>");
-    // liTag.addClass("list-group-item saved-city");
-    // liTag.attr("id", i);
-    // ulTag.append(liTag);
-    // $("#" + i).text(storage[i]);
+    $("#saved-cities").append(`
+   <li class="list-group-item saved-city-name" id=${[i]}>
+   ${storage[i]}
+   </li>
+   
+    `);
   }
 }
 
