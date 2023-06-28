@@ -145,6 +145,7 @@ function getHourlyWeather(data) {
 }
 
 function extendedForecast(data) {
+  $("#forecast").empty();
   console.log(data);
   // for loop that will get us the 5 day weather forecast
   for (let i = 1; i < 8; i++) {
