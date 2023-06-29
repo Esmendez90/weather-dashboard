@@ -223,28 +223,43 @@ function renderStoredCityNames() {
     `);
   }
   deleteOneCity();
+  deleteAllStoredCities();
 }
 
-if (localStorage.getItem("stored-city-names") === null) {
+function deleteOneCity() {
+  $(".delete-city-btn").on("click", function (event) {
+    event.preventDefault();
+    let x = event.target.parentElement.parentElement.innerText;
+
+    let storage = JSON.parse(localStorage.getItem("stored-city-names"));
+
+    storage = storage.filter((e) => e !== x);
+
+    localStorage.setItem("stored-city-names", JSON.stringify(storage));
+
+    renderStoredCityNames();
+  });
+}
+
+function deleteAllStoredCities() {
+  $(".clear-cities-btn").on("click", function (event) {
+    event.preventDefault();
+    let storage = JSON.parse(localStorage.getItem("stored-city-names"));
+    // console.log(storage);
+    storage = storage.filter((e) => e !== e);
+
+    localStorage.setItem("stored-city-names", JSON.stringify(storage));
+    renderStoredCityNames();
+  });
+}
+
+if (
+  localStorage.getItem("stored-city-names") === null ||
+  localStorage.getItem("stored-city-names") === "undefined"
+) {
   localStorage.setItem("stored-city-names", JSON.stringify([]));
 } else {
   renderStoredCityNames();
-}
-
-function deleteOneCity(){
-$(".delete-city-btn").on("click", function (event) {
-  event.preventDefault();
-  let x = event.target.parentElement.parentElement.innerText;
-
-  let storage = JSON.parse(localStorage.getItem("stored-city-names"));
-
-  storage = storage.filter((e) => e !== x);
-
-  localStorage.setItem("stored-city-names", JSON.stringify(storage));
-
-  renderStoredCityNames()
-  
-});
 }
 
 // // When the user clicks on the search button then the user input will be stored in local storage

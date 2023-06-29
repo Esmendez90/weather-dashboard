@@ -201,7 +201,8 @@ input,
   color: #5060b7;
 }
 .delete-city-btn:hover {
-  color: #28335c;
+  /* color: #28335c; */
+  color: rgba(255, 0, 0, 0.698);
   font-weight: bold;
   font-size: 16px;
   background-color: rgba(128, 128, 128, 0.052);
