@@ -85,13 +85,17 @@ input,
 .weather-data-container ul li i {
   margin: 3px;
 }
-.default-city-name {
+.default-city-name, .delete-default-city-name {
   color: #f4b500;
   font-size: 16px;
   clear: right;
   float: left;
   border: none;
   background-color: transparent;
+}
+
+.delete-default-city-name {
+  display: none;
 }
 .fa-droplet {
   color: #00ccff;

@@ -269,8 +269,9 @@ $(".default-city-name").on("click", function (event) {
   let defaultCityStorage = JSON.parse(
     localStorage.getItem("default-city-name")
   );
+  // console.log("LJJ: ", defaultCityStorage)
 
-  if (defaultCityStorage.length <= 0) {
+  if (defaultCityStorage.length == 0) {
     alert(`${defaultCityName} has been added as your default city.`);
 
     let defaultCityStorage = JSON.parse(
@@ -282,9 +283,27 @@ $(".default-city-name").on("click", function (event) {
       "default-city-name",
       JSON.stringify(defaultCityStorage)
     );
+    $(".default-city-name").css("display", "none");
+    $(".delete-default-city-name").css("display", "block");
   } else {
     alert(`You have already set ${defaultCityName} as your default city.`);
   }
+});
+
+// Delete default city name
+$(".delete-default-city-name").on("click", function (event) {
+  event.preventDefault();
+  let defaultCityStorage = JSON.parse(
+    localStorage.getItem("default-city-name")
+  );
+  console.log("LJJ: ", defaultCityStorage);
+
+  defaultCityStorage = defaultCityStorage.filter((e) => e !== e);
+
+  localStorage.setItem("default-city-name", JSON.stringify(defaultCityStorage));
+
+  $(".delete-default-city-name").css("display", "none");
+  $(".default-city-name").css("display", "block");
 });
 
 // Verify if localStorage for list of Searched Cities
@@ -297,10 +316,21 @@ if (
   renderStoredCityNames();
 }
 
-// Verify localStorage for Ddfault city name
-if (localStorage.getItem("default-city-name") === null) {
+// Verify localStorage for Default city name
+if (localStorage.getItem("default-city-name") === null ||
+localStorage.getItem("default-city-name") === "undefined"
+) {
   localStorage.setItem("default-city-name", JSON.stringify([]));
-} else {
+}
+
+//FIX THIS!!!!
+// else if (JSON.parse(localStorage.getItem("default-city-name")) == ([])) {
+//   alert("Welcome");
+// } 
+
+else {
+  $(".default-city-name").css("display", "none");
+  $(".delete-default-city-name").css("display", "block");
   getWeatherData(JSON.parse(localStorage.getItem("default-city-name")));
 }
 
