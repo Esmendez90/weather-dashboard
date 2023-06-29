@@ -136,21 +136,27 @@ input,
   width: 50%;
   text-align: center;
 }
-.hourly-forecast-container, .forecast-container {
+.hourly-forecast-container,
+.forecast-container {
   display: grid;
 }
-#hourly-forecast, #forecast {
+#hourly-forecast,
+#forecast {
   display: inline-flex;
   overflow-x: auto;
   overflow-y: hidden;
 }
-#hourly-forecast{
+#hourly-forecast {
   background-color: #677bc6ad;
   padding: 25px 0;
+}
+
+#hourly-forecast, #forecast{
   border-radius: 5px;
 }
 
-#hourly-card, #forecast-card {
+#hourly-card,
+#forecast-card {
   margin: 0;
   background-color: rgba(255, 255, 255, 0.052);
   color: rgba(255, 255, 255, 0.904);
@@ -165,6 +171,41 @@ input,
 }
 #hourly-weather-icon {
   width: 100%;
+}
+
+#saved-cities {
+  list-style-type: none;
+  padding: 0;
+  /* display: grid; */
+}
+
+.saved-city-name {
+  display: inline-flex;
+  width: 33%;
+  height: 40px;
+  margin: 7px;
+  padding: 12px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: #465694;
+  background-color: white;
+}
+.delete-city-btn{
+  background-color: white;
+  border: none;
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  color: #5060b7;
+}
+.delete-city-btn:hover {
+  color: #28335c;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: rgba(128, 128, 128, 0.052);
+  border-radius: 5px;
 }
 
 /* .fa-arrow-up,

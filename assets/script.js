@@ -33,7 +33,6 @@ function getCityName(e) {
 }
 
 function getWeatherData(cityName) {
-  // console.log("City: ", cityName);
   let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=${apiKey}`;
 
   $.ajax({
@@ -44,6 +43,7 @@ function getWeatherData(cityName) {
         placeName = response.name;
         countryName = response.sys.country;
         weatherDescription = response.weather[0].description;
+        weatherIconUrl = response.weather[0].icon;
         temperature = response.main.temp;
         feelsLike = response.main.feels_like;
         maxTemp = response.main.temp_max;
@@ -52,7 +52,6 @@ function getWeatherData(cityName) {
         windSpeed = response.wind.speed;
 
         getTodaysDate(response.dt, response.sys.sunrise, response.sys.sunset);
-        getWeatherIcon(response.weather[0].icon);
         getUvIndex(response.coord.lat, response.coord.lon);
         storedCities(cityName);
       }
@@ -64,7 +63,7 @@ function getWeatherData(cityName) {
     },
   });
 }
-
+// UV index data. Execute hourly and extended weather data and render it
 function getUvIndex(...data) {
   let oneCallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${data[0]}&lon=${data[1]}&appid=${apiKey}&units=imperial`;
 
@@ -107,7 +106,10 @@ function renderWeatherData() {
   //  console.log("description ", weatherDescription);
   $("#city-name, #country-name").text(`${placeName}, ${countryName}`);
   $("#weather-description").text(`${weatherDescription}`);
-  $("#weather-icon").attr("src", weatherIconUrl);
+  $("#weather-icon").attr(
+    "src",
+    `https://openweathermap.org/img/wn/${weatherIconUrl}@2x.png`
+  );
   $("#current-date").text(`${todaysDate}`);
   $("#feels-like").text(`Feels like ${temps[3]}`);
   $("#temperature").text(`${temps[0]} F`);
@@ -199,12 +201,8 @@ function extendedForecast(data) {
   }
 }
 
-function getWeatherIcon(icon) {
-  weatherIconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-}
-
 function storedCities(cityName) {
-  //console.log("Store: ", cityName);
+  cityName = cityName.toUpperCase();
   let storage = JSON.parse(localStorage.getItem("stored-city-names"));
   storage.push(cityName);
   localStorage.setItem("stored-city-names", JSON.stringify(storage));
@@ -216,22 +214,38 @@ function renderStoredCityNames() {
   $("#saved-cities").empty();
 
   let storage = JSON.parse(localStorage.getItem("stored-city-names"));
-  console.log(storage);
   for (let i = 0; i < storage.length; i++) {
     $("#saved-cities").append(`
-   <li class="list-group-item saved-city-name" id=${[i]}>
+   <li class="saved-city-name" id=${[i]}>
+   <button class="delete-city-btn"><i class="fa-solid fa-xmark"></i></button>
    ${storage[i]}
    </li>
-   
     `);
   }
+  deleteOneCity();
 }
 
 if (localStorage.getItem("stored-city-names") === null) {
   localStorage.setItem("stored-city-names", JSON.stringify([]));
+} else {
+  renderStoredCityNames();
 }
 
-renderStoredCityNames();
+function deleteOneCity(){
+$(".delete-city-btn").on("click", function (event) {
+  event.preventDefault();
+  let x = event.target.parentElement.parentElement.innerText;
+
+  let storage = JSON.parse(localStorage.getItem("stored-city-names"));
+
+  storage = storage.filter((e) => e !== x);
+
+  localStorage.setItem("stored-city-names", JSON.stringify(storage));
+
+  renderStoredCityNames()
+  
+});
+}
 
 // // When the user clicks on the search button then the user input will be stored in local storage
 // // The city's data will be rendered on the page.
@@ -289,7 +303,7 @@ renderStoredCityNames();
 
 // function deleteItems() {
 //   localStorage.clear();
-// };
+// }
 
 // renderCities();
 // displayCityWeather("new york");
