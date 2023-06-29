@@ -224,6 +224,7 @@ function renderStoredCityNames() {
   }
   deleteOneCity();
   deleteAllStoredCities();
+  renderOneStoredCity();
 }
 
 function deleteOneCity() {
@@ -245,11 +246,18 @@ function deleteAllStoredCities() {
   $(".clear-cities-btn").on("click", function (event) {
     event.preventDefault();
     let storage = JSON.parse(localStorage.getItem("stored-city-names"));
-    // console.log(storage);
     storage = storage.filter((e) => e !== e);
 
     localStorage.setItem("stored-city-names", JSON.stringify(storage));
     renderStoredCityNames();
+  });
+}
+
+function renderOneStoredCity() {
+  $(".saved-city-name").on("click", function (event) {
+    event.preventDefault();
+    getWeatherData(event.target.innerText);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
 
@@ -261,44 +269,6 @@ if (
 } else {
   renderStoredCityNames();
 }
-
-// // When the user clicks on the search button then the user input will be stored in local storage
-// // The city's data will be rendered on the page.
-// searchBtn.on("submit",getCityData);
-
-// function getCityData (e) {
-//   e.preventDefault();
-
-//   let citySearch = cityInput.val().trim();
-//   // if (citySearch === ""){
-//   //   alert("Enter a city name");
-//   // } else {
-//   let storage = JSON.parse(localStorage.getItem("city-weather"));
-//   storage.push(citySearch);
-//   localStorage.setItem("city-weather", JSON.stringify(storage));
-
-//   uvIndex.removeClass("green yellow orange red");
-//   displayCityWeather(citySearch);
-//   renderCities();
-//   // document.getElementById("myForm").reset();
-//   // }
-// };
-
-// // The previously searched cities will be appended to a ul list
-// // Every new search will be added to the list.
-// function renderCities() {
-//   $("#saved-cities").empty();
-
-//   let storage = JSON.parse(localStorage.getItem("city-weather"));
-
-//   for (let i = 0; i < storage.length; i++) {
-//     let liTag = $("<li>");
-//     liTag.addClass("list-group-item saved-city");
-//     liTag.attr("id", i);
-//     ulTag.append(liTag);
-//     $("#" + i).text(storage[i]);
-//   }
-// };
 
 // // If the user clicks on a city from the list then the data of that city will be displayed
 // ulTag.click(function (event) {

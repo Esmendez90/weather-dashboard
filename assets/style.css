@@ -204,9 +204,14 @@ input,
   /* color: #28335c; */
   color: rgba(255, 0, 0, 0.698);
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   background-color: rgba(128, 128, 128, 0.052);
   border-radius: 5px;
+}
+.saved-city-name:hover{
+  text-decoration: underline;
+  font-weight: bold;
+
 }
 
 /* .fa-arrow-up,
