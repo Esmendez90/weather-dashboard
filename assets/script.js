@@ -261,6 +261,33 @@ function renderOneStoredCity() {
   });
 }
 
+// Default city name button
+$(".default-city-name").on("click", function (event) {
+  event.preventDefault();
+  let defaultCityName = $("#city-name")[0].innerText;
+  defaultCityName = defaultCityName.split(",")[0];
+  let defaultCityStorage = JSON.parse(
+    localStorage.getItem("default-city-name")
+  );
+
+  if (defaultCityStorage.length <= 0) {
+    alert(`${defaultCityName} has been added as your default city.`);
+
+    let defaultCityStorage = JSON.parse(
+      localStorage.getItem("default-city-name")
+    );
+
+    defaultCityStorage.push(defaultCityName);
+    localStorage.setItem(
+      "default-city-name",
+      JSON.stringify(defaultCityStorage)
+    );
+  } else {
+    alert(`You have already set ${defaultCityName} as your default city.`);
+  }
+});
+
+// Verify if localStorage for list of Searched Cities
 if (
   localStorage.getItem("stored-city-names") === null ||
   localStorage.getItem("stored-city-names") === "undefined"
@@ -268,6 +295,13 @@ if (
   localStorage.setItem("stored-city-names", JSON.stringify([]));
 } else {
   renderStoredCityNames();
+}
+
+// Verify localStorage for Ddfault city name
+if (localStorage.getItem("default-city-name") === null) {
+  localStorage.setItem("default-city-name", JSON.stringify([]));
+} else {
+  getWeatherData(JSON.parse(localStorage.getItem("default-city-name")));
 }
 
 // // If the user clicks on a city from the list then the data of that city will be displayed

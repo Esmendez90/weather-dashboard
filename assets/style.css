@@ -85,11 +85,13 @@ input,
 .weather-data-container ul li i {
   margin: 3px;
 }
-.fa-star {
+.default-city-name {
   color: #f4b500;
   font-size: 16px;
   clear: right;
   float: left;
+  border: none;
+  background-color: transparent;
 }
 .fa-droplet {
   color: #00ccff;
@@ -151,7 +153,8 @@ input,
   padding: 25px 0;
 }
 
-#hourly-forecast, #forecast{
+#hourly-forecast,
+#forecast {
   border-radius: 5px;
 }
 
@@ -192,7 +195,7 @@ input,
   color: #465694;
   background-color: white;
 }
-.delete-city-btn{
+.delete-city-btn {
   background-color: white;
   border: none;
   position: absolute;
@@ -208,10 +211,9 @@ input,
   background-color: rgba(128, 128, 128, 0.052);
   border-radius: 5px;
 }
-.saved-city-name:hover{
+.saved-city-name:hover {
   text-decoration: underline;
   font-weight: bold;
-
 }
 
 /* .fa-arrow-up,
