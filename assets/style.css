@@ -3,10 +3,9 @@ body {
   /* height: 100vh; */
   background-image: linear-gradient(
     to top,
-
-    #677bc6,
-    #4351ae,
-    #465694,
+    #28335c,
+    /* #465694, */ /* #677bc6,
+    #4351ae, */ #465694,
     #28335c
   );
   margin: 0;
@@ -89,9 +88,15 @@ input,
 #weather-icon {
   display: flex;
   margin: auto;
-  background: #fafafa45;
+  background: #fafafa99;
   border-radius: 15px;
   margin-top: 20px;
+}
+.forecast-icon-container > img {
+  background: #fafafa99;
+  border-radius: 15px;
+  width: 70px;
+  height: 70px;
 }
 #temperature {
   font-size: 34px;
@@ -168,7 +173,7 @@ input,
   overflow-y: hidden;
 }
 #hourly-forecast {
-  background-color: #677bc6ad;
+  background-color: #677bc629;
   padding: 25px 0;
 }
 
@@ -192,7 +197,9 @@ input,
   align-items: center;
 }
 #hourly-weather-icon {
-  width: 100%;
+  width: 39px;
+  height: 39px;
+  /* width: 100%; */
 }
 
 #saved-cities {
@@ -233,4 +240,73 @@ input,
 .saved-city-name:hover {
   text-decoration: underline;
   font-weight: bold;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer-container > p {
+  letter-spacing: 1.2px;
+}
+
+.footer-container > img {
+  width: 100px;
+  margin-left: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  header h1 {
+    font-size: 50px;
+  }
+  input {
+    width: 260px;
+  }
+  main {
+    margin: 0 15%;
+  }
+  .weather-data-container ul {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  .sun-container-sunrise,
+  .sun-container-sunset {
+    width: 44%;
+  }
+  .saved-city-name {
+    width: 24%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  header h1 {
+    font-size: 80px;
+  }
+  input {
+    width: 300px;
+  }
+  main {
+    margin: 0 18%;
+  }
+  .default-city-name,
+  .delete-default-city-name {
+    font-size: 21px;
+  }
+  .sun-container-sunrise,
+  .sun-container-sunset {
+    width: 34%;
+  }
+  .sun-container-sunrise {
+    margin-right: 10px;
+  }
+  .sun-container-sunset {
+    margin-left: 10px;
+  }
+  #forecast-card{
+    padding: 0 19px;
+  }
+  .saved-city-name {
+    width: 19%;
+  }
 }

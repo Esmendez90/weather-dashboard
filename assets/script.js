@@ -79,7 +79,7 @@ function getUvIndex(...data) {
       $("#uv-index-icon").css("color", "#4caf50");
     } else if (uvIndexValue > 2 && uvIndexValue < 8) {
       $("#uv-index-icon").css("color", "#ffeb3b");
-    } else if (uvIndexValue > 8) {
+    } else if (uvIndexValue >= 8) {
       $("#uv-index-icon").css("color", "#e91e1e");
     }
 
@@ -148,7 +148,7 @@ function getHourlyWeather(data) {
                  <p style="margin-bottom: 5px">${hourlyTemp}\xB0</p>
                  <div class="hourly-icon-container">
                  <img id="hourly-weather-icon" src="${hourlyIcon}" alt="hourly weather icon" />
-                <div>
+                </div>
               </div>
               `
     );
@@ -190,7 +190,7 @@ function extendedForecast(data) {
       `<div id="forecast-card">
             <p style="font-size:20px; letter-spacing:0.5px">${date}</p>
             
-           <p style="margin-bottom:0;">${forecastTemp}\xB0</p>
+           <p>${forecastTemp}\xB0</p>
            <div class="forecast-icon-container">
            
            <img src="${forecastIconUrl}" alt="forecast weather icon"/>
