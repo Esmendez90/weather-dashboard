@@ -86,6 +86,8 @@ input,
 }
 
 #weather-icon {
+  width: 100px;
+  height: 100px;
   display: flex;
   margin: auto;
   background: #fafafa99;
@@ -303,7 +305,7 @@ input,
   .sun-container-sunset {
     margin-left: 10px;
   }
-  #forecast-card{
+  #forecast-card {
     padding: 0 19px;
   }
   .saved-city-name {
