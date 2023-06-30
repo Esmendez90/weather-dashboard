@@ -40,6 +40,7 @@ function getWeatherData(cityName) {
     method: "GET",
     success: function (response) {
       if (response) {
+        console.log(response);
         placeName = response.name;
         countryName = response.sys.country;
         weatherDescription = response.weather[0].description;
@@ -72,7 +73,7 @@ function getUvIndex(...data) {
     url: oneCallURL,
     method: "GET",
   }).then(function (response) {
-    // console.log(response);
+     console.log(response);
     uvIndexValue = Math.trunc(response.current.uvi);
 
     if (uvIndexValue < 3) {
