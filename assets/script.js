@@ -54,6 +54,7 @@ function getWeatherData(cityName) {
         getTodaysDate(response.dt, response.sys.sunrise, response.sys.sunset);
         getUvIndex(response.coord.lat, response.coord.lon);
         storedCities(cityName);
+        
       }
     },
     error: function () {
@@ -269,7 +270,6 @@ $(".default-city-name").on("click", function (event) {
   let defaultCityStorage = JSON.parse(
     localStorage.getItem("default-city-name")
   );
-  // console.log("LJJ: ", defaultCityStorage)
 
   if (defaultCityStorage.length == 0) {
     alert(`${defaultCityName} has been added as your default city.`);
@@ -296,7 +296,6 @@ $(".delete-default-city-name").on("click", function (event) {
   let defaultCityStorage = JSON.parse(
     localStorage.getItem("default-city-name")
   );
-  console.log("LJJ: ", defaultCityStorage);
 
   defaultCityStorage = defaultCityStorage.filter((e) => e !== e);
 
@@ -317,42 +316,22 @@ if (
 }
 
 // Verify localStorage for Default city name
-if (localStorage.getItem("default-city-name") === null ||
-localStorage.getItem("default-city-name") === "undefined"
+// if localStorage does NOT exist...
+if (
+  localStorage.getItem("default-city-name") === null ||
+  localStorage.getItem("default-city-name") === "undefined"
 ) {
+  // Create a localStorage for default city name
   localStorage.setItem("default-city-name", JSON.stringify([]));
 }
-
-//FIX THIS!!!!
-// else if (JSON.parse(localStorage.getItem("default-city-name")) == ([])) {
-//   alert("Welcome");
-// } 
-
-else {
+else if (JSON.parse(localStorage.getItem("default-city-name")).length == 0) {
+  console.log(
+    "Click the start and mark a city as your default city for weather data."
+  );
+} else if (JSON.parse(localStorage.getItem("default-city-name")).length == 1) {
+  console.log("there's 1 item");
   $(".default-city-name").css("display", "none");
   $(".delete-default-city-name").css("display", "block");
-  getWeatherData(JSON.parse(localStorage.getItem("default-city-name")));
+  let defaultName = JSON.parse(localStorage.getItem("default-city-name"))[0]
+  getWeatherData(defaultName);
 }
-
-// // If the user clicks on a city from the list then the data of that city will be displayed
-// ulTag.click(function (event) {
-//   let element = event.target;
-//   let index = element.id; // will give us the id of the li element the user clicks on
-//   console.log(index);
-//   let megadeth = $("#" + index); // calling the id of the element and concatenating it with the index letiable
-//   let city = megadeth.text(); // will give us the text (the city name) of the targeted element
-//   console.log(city);
-//   uvIndex.removeClass("green yellow orange red");
-//   displayCityWeather(city); // will run the function and give us the data of the city
-// });
-
-// if (localStorage.getItem("city-weather") === null) {
-//   localStorage.setItem("city-weather", JSON.stringify([]));
-// };
-
-// function deleteItems() {
-//   localStorage.clear();
-// }
-
-// renderCities();
-// displayCityWeather("new york");
