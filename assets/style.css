@@ -22,21 +22,33 @@ header h1 {
 header,
 form {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 input {
   width: 206px;
   height: 36px;
 }
-#search-btn {
+#search-btn,
+.clear-cities-btn {
   width: 48px;
-  height: 37px;
+  height: 43px;
   background-color: white;
+  margin-left: 10px;
+  color: #28335c;
 }
+
 #search-btn:active {
   border-color: #f4b500;
 }
-
+.clear-cities-btn {
+  width: auto;
+  letter-spacing: 1.2px;
+  font-weight: bold;
+  border-radius: 5px;
+}
 input,
 #search-btn {
   border-radius: 5px;
@@ -45,7 +57,6 @@ input,
   color: black;
 }
 .data-container {
-  /* text-align:center; */
   margin: 5%;
   padding: 1rem;
 }
@@ -78,6 +89,9 @@ input,
 #weather-icon {
   display: flex;
   margin: auto;
+  background: #fafafa45;
+  border-radius: 15px;
+  margin-top: 20px;
 }
 #temperature {
   font-size: 34px;
@@ -85,7 +99,8 @@ input,
 .weather-data-container ul li i {
   margin: 3px;
 }
-.default-city-name, .delete-default-city-name {
+.default-city-name,
+.delete-default-city-name {
   color: #f4b500;
   font-size: 16px;
   clear: right;
@@ -219,164 +234,3 @@ input,
   text-decoration: underline;
   font-weight: bold;
 }
-
-/* .fa-arrow-up,
-.fa-arrow-down {
-  margin: 0;
-  margin-left: -5px !important;
-  font-size: 14px;
-} */
-
-/*body {
- 
-  background-image: url('/assets/images/pexels-eberhard-grossgasteiger-2098427.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-  margin: 0;
-  color: white;
-}
-
-.form-container {
-  padding: 4rem;
-}
-form {
-  position: relative;
-  background-color: transparent;
-  margin: auto;
-}
-input {
-  width: 100%;
-  height: 30px;
-  background-color: white;
-  border: 1px solid #a5a4a4;
-  border-radius: 10px;
-}
-#search-btn {
-  position: absolute;
-  top: 0px;
-  right: 0;
-  border: none;
-  padding: 0;
-  padding-top: 10px;
-  margin: 0;
-  background-color: rgba(0, 0, 0, 0);
-}
-i {
-  color: #383838;
-}
-.weatherData-container {
-  padding: 2rem;
-}
-/* .weatherIcon-container{
-  position: absolute;
-    top: 12%;
-    right: 0%;
-    width: 200px;
-} 
-#weather-icon {
-  width: 100%;
-}
-#city-name {
-  width: fit-content;
-  display: inline-flex;
-}
-h1,
-h3 {
-  font-size: 28px;
-  margin-top: 2rem;
-  margin-bottom: 0;
-}
-h3 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-#temperature {
-  font-weight: 200;
-}
-p {
-  margin: 0;
-}
-.forecast-container {
-  padding: 2rem;
-  background-color: #25252559;
-}
-.forecast-container h3, .storage-container h3 {
-  font-size: 19px;
-  font-weight: 500;
-}
-#forecast {
-  display: flex;
-  overflow: hidden;
-  overflow-x: scroll;
-}
-#forecast-card {
-  border: 1px solid #ffffff63;
-  border-radius: 10px;
-  padding: 1rem;
-  text-align: center;
-}
-#forecast-card:not(:last-child) {
-  margin-right: 1rem;
-}
-
-.storage-container {
-  padding: 2rem;
-}
-ul{
-  padding-left: 0;
-}
-.list-group-item {
-  list-style: none;
-  display: inline-block;
-  border: 1px solid grey;
-  padding: 5px 8px;
-  margin: 5px;
-  border-radius: 5px;
-  background-color: #efefef;
-  color: black;
-}
-.clearBtn{
-  font-weight: bold;
-  padding: 5px;
-}
-.green, .yellow, .orange, .red {
-  width: fit-content;
-  border-radius: 15px;
-  padding: 0 5px;
-}
-.green{
-  background-color: rgb(5, 206, 5);
-}
-.yellow {
-  background-color: yellow;
-}
-
-.orange {
-  background-color: orange;
-}
-
-.red {
-  background-color: red;
-}
-.weatherData-container p {
-  margin-top: 5px;
-}
-.fa-droplet{
-  color:#284df5;
-}
-.fa-wind{
-  color:#ffffffc4
-}
-
-@media screen and (min-width:768px){
-  #myForm {
-    width: 50%;
-  }
-  .weatherData-container, .storage-container {
-    padding: 2rem 8rem;
-  }
-  .weatherIcon-container {
-    right: 10%;
-  }
-}*/

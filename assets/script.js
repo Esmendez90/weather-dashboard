@@ -326,10 +326,9 @@ if (
 }
 else if (JSON.parse(localStorage.getItem("default-city-name")).length == 0) {
   console.log(
-    "Click the start and mark a city as your default city for weather data."
+    "Click the star icon and mark a city as your default city for weather data."
   );
 } else if (JSON.parse(localStorage.getItem("default-city-name")).length == 1) {
-  console.log("there's 1 item");
   $(".default-city-name").css("display", "none");
   $(".delete-default-city-name").css("display", "block");
   let defaultName = JSON.parse(localStorage.getItem("default-city-name"))[0]
