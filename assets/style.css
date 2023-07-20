@@ -1,7 +1,7 @@
 body {
   width: 100vw;
   /* height: 100vh; */
-  background-color:#28335c;;
+  background-color: #28335c;
   margin: 0;
   color: white;
 }
@@ -169,7 +169,7 @@ input,
   overflow-y: hidden;
 }
 #hourly-forecast {
-  background-color: #677bc629;
+  background-color: #3c4b8645;
   padding: 25px 0;
 }
 
@@ -181,7 +181,8 @@ input,
 #hourly-card,
 #forecast-card {
   margin: 0;
-  background-color: rgba(255, 255, 255, 0.052);
+  background-color: #3c4b8645;
+  /* background-color: rgba(255, 255, 255, 0.052); */
   color: rgba(255, 255, 255, 0.904);
   padding: 0 10px;
   text-align: center;
@@ -207,7 +208,7 @@ input,
 .saved-city-name {
   display: inline-flex;
   width: 33%;
-  height: 40px;
+  height: 30px;
   margin: 7px;
   padding: 12px;
   position: relative;
@@ -216,6 +217,8 @@ input,
   border-radius: 5px;
   color: #465694;
   background-color: white;
+  font-size: 12px;
+  text-align: center;
 }
 .delete-city-btn {
   background-color: white;
@@ -236,20 +239,27 @@ input,
 .saved-city-name:hover {
   text-decoration: underline;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .footer-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 0;
 }
 .footer-container > p {
   letter-spacing: 1.2px;
 }
 
-.footer-container > img {
-  width: 100px;
+.footer-container a img {
+  width: 65px;
   margin-left: 10px;
+  transition: width 0.2s;
+  transition-timing-function: ease-in-out;
+}
+.footer-container a img:hover {
+  width: 70px;
 }
 
 @media screen and (min-width: 768px) {

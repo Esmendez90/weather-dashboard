@@ -145,8 +145,8 @@ function getHourlyWeather(data) {
 
     $("#hourly-forecast").append(
       `<div id="hourly-card">
-                <p>${hourly}</p>
-                 <p style="margin-bottom: 5px">${hourlyTemp}\xB0</p>
+                <p style="font-weight:bold;">${hourly}</p>
+                 <p style="margin-bottom: 5px; font-weight:bold;">${hourlyTemp}\xB0</p>
                  <div class="hourly-icon-container">
                  <img id="hourly-weather-icon" src="${hourlyIcon}" alt="hourly weather icon" />
                 </div>
@@ -189,14 +189,14 @@ function extendedForecast(data) {
     // Create 5 cards that will display the weather forecast for 5 days.
     $("#forecast").append(
       `<div id="forecast-card">
-            <p style="font-size:20px; letter-spacing:0.5px">${date}</p>
+            <p style="font-size:20px; letter-spacing:0.5px; font-weight:bold;">${date}</p>
             
-           <p>${forecastTemp}\xB0</p>
+           <p style="font-weight:bold;">${forecastTemp}\xB0</p>
            <div class="forecast-icon-container">
            
            <img src="${forecastIconUrl}" alt="forecast weather icon"/>
            </div>
-           <p style="margin-top: 0px;"><i class="fa-solid fa-droplet"></i> ${forecastHumidity}%</p>
+           <p style="margin-top: 0px; font-weight:bold;"><i class="fa-solid fa-droplet"></i> ${forecastHumidity}%</p>
         </div>
         `
     );
