@@ -1,13 +1,7 @@
 body {
   width: 100vw;
   /* height: 100vh; */
-  background-image: linear-gradient(
-    to top,
-    #28335c,
-    /* #465694, */ /* #677bc6,
-    #4351ae, */ #465694,
-    #28335c
-  );
+  background-color:#28335c;;
   margin: 0;
   color: white;
 }

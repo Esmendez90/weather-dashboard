@@ -311,8 +311,10 @@ if (
   localStorage.getItem("stored-city-names") === null ||
   localStorage.getItem("stored-city-names") === "undefined"
 ) {
+  $(".fa-star").css("display","none");
   localStorage.setItem("stored-city-names", JSON.stringify([]));
 } else {
+  $(".fa-star").css("display","initial");
   renderStoredCityNames();
 }
 
