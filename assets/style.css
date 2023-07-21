@@ -1,3 +1,93 @@
+/* Icons */
+/* SUN */
+.icon {
+  display: none;
+}
+.sun {
+  width: 20px;
+  height: 20px;
+  background-color: orange;
+  border-radius: 50%;
+}
+
+/* CLOUD */
+.cloud-container {
+  position: relative;
+}
+.cloud,
+.cloud1,
+.cloud2 {
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border-radius: 50%;
+}
+.cloud1,
+.cloud2 {
+  position: absolute;
+  top: -8px;
+  left: 8px;
+}
+.cloud2 {
+  top: -2px;
+  left: 17px;
+}
+.cloud3 {
+  top: 4px;
+  width: 29px;
+  height: 11px;
+  border-radius: 0;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+/* RAIN */
+.rain-container {
+  /* display: inline-flex; */
+}
+
+.rain-drop {
+  background-color: #3796e1;
+  width: 2px;
+  height: 3.5px;
+  border-radius: 1px;
+  transform: rotate(28deg);
+  margin: 0 1px;
+}
+.rain-drop1 {
+  height: 7px;
+  margin-right: 2.5px;
+}
+/* BROKEN CLOUNDS */
+.broken-cloud1 {
+  position: absolute;
+  top: -3px;
+  left: 12px;
+  z-index: -1;
+}
+.broken-cloud1 > .cloud,
+.broken-cloud1 > .cloud1 {
+  background-color: grey;
+}
+/* fEW-CLOUDS SUN + CLOUD */
+.few-clouds-sun {
+  position: absolute;
+  left: 16px;
+  top: -8px;
+}
+/* SHOWER RAIN - 2CLOUDS DARK + RAIN */
+.shower-rain > .rain-container {
+  position: absolute;
+  left: 10px;
+  margin-top: 2px;
+}
+/* RAIN - CLOUD + BEHIND SUN + RAIN */
+.rain > .rain-container {
+  position: absolute;
+  left: 5px;
+  margin-top: 1px;
+
+}
+/* ==== */
 body {
   width: 100vw;
   /* height: 100vh; */
