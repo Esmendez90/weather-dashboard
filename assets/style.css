@@ -129,7 +129,7 @@
 }
 .thunder1::after {
   content: "h";
-  background-color: #28335c;
+  background-color: #7488d5;
   color: transparent;
   position: absolute;
   left: 9.5px;
@@ -242,7 +242,7 @@
 body {
   width: 100vw;
   /* height: 100vh; */
-  background-color: #28335c;
+  background-color: #7488d5;
   margin: 0;
   color: white;
 }
@@ -252,6 +252,7 @@ h3,
 }
 header h1 {
   letter-spacing: 1.3px;
+  text-shadow: 0 0 4px grey;
 }
 header,
 form {
@@ -263,15 +264,17 @@ form {
 
 input {
   width: 206px;
-  height: 36px;
+  height: 40px;
+  border: none;
 }
 #search-btn,
 .clear-cities-btn {
   width: 48px;
   height: 43px;
   background-color: white;
-  margin-left: 10px;
+  margin-left: 5px;
   color: #28335c;
+  border: none;
 }
 
 #search-btn:active {
@@ -307,6 +310,7 @@ input,
   justify-content: center;
   align-items: center;
   margin-bottom: 0;
+  text-shadow: 0 0 2px grey;
 }
 #current-date {
   text-align: center;
@@ -422,7 +426,7 @@ input,
 #hourly-card,
 #forecast-card {
   margin: 0;
-  background-color: #3c4b8645;
+  background-color: #6578c145;
   /* background-color: rgba(255, 255, 255, 0.052); */
   color: rgba(255, 255, 255, 0.904);
   padding: 0 10px;
@@ -555,5 +559,14 @@ input,
   }
   .saved-city-name {
     width: 19%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #hourly-forecast{
+    justify-content: center;
+  }
+  #hourly-card, #forecast-card{
+    width: 100%;
   }
 }
