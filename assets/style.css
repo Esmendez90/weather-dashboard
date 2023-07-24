@@ -458,15 +458,15 @@ input,
   border-radius: 5px;
   color: #465694;
   background-color: white;
-  font-size: 12px;
+  font-size: 11px;
   text-align: center;
 }
 .delete-city-btn {
   background-color: white;
   border: none;
   position: absolute;
-  top: 4px;
-  right: 5px;
+  top: 2px;
+  right: 3px;
   color: #5060b7;
 }
 .delete-city-btn:hover {

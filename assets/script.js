@@ -45,7 +45,12 @@ function getWeatherData(cityName) {
         // console.log(response);
         placeName = response.name;
         countryName = response.sys.country;
-        weatherDescription = response.weather[0].description;
+
+        let weatherDescription1 = response.weather[0].description;
+        let x = weatherDescription1.charAt(0).toUpperCase();
+        let y = weatherDescription1.slice(1);
+        weatherDescription = x + y;
+
         weatherIconUrl = response.weather[0].icon;
         temperature = response.main.temp;
         feelsLike = response.main.feels_like;
@@ -54,11 +59,11 @@ function getWeatherData(cityName) {
         humidity = response.main.humidity;
         windSpeed = response.wind.speed;
 
-        console.log(response.weather[0].icon);
+        //console.log(response.weather[0].icon);
         getTodaysDate(response.dt, response.sys.sunrise, response.sys.sunset);
         getUvIndex(response.coord.lat, response.coord.lon);
         storedCities(cityName);
-        getBetterIcon();
+        // getBetterIcon();
       }
     },
     error: function () {
@@ -104,10 +109,10 @@ function getTodaysDate(dt, sunrise, sunset) {
   sunsetTime = sunsetConvertTime.substring(16, 21);
 }
 
-function getBetterIcon() {
-  console.log("this be: ", weatherIconUrl);
-  //$(`.icon-${weatherIconUrl}`).css("display","block");
-}
+// function getBetterIcon() {
+//   console.log("this be: ", weatherIconUrl);
+//   //$(`.icon-${weatherIconUrl}`).css("display","block");
+// }
 
 function renderWeatherData() {
   // $(".icon").css("display", "none");
