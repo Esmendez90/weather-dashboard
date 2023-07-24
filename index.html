@@ -25,43 +25,37 @@
     <main>
       <!-- icons -->
       <!-- SUN -->
-      <div class="icon sun-icon-container 01d">
+      <div class="icon-01d icon">
         <div class="sun"></div>
       </div>
+      <!-- night -->
+      <div class="icon-01n icon">
+        <div class="icon-01n-sun"></div>
+      </div>
       <!-- CLOUD -->
-      <div class="icon cloud-container 03d">
+      <div class="icon-03d icon-03n icon">
         <div class="cloud"></div>
         <div class="cloud1"></div>
         <div class="cloud1 cloud2"></div>
         <div class="cloud1 cloud3"></div>
       </div>
-      <!-- RAIN -->
-      <!-- change display to inline-flex -->
-      <div class="icon rain-container">
-        <div class="rain-drop"></div>
-        <div class="rain-drop rain-drop1"></div>
-        <div class="rain-drop"></div>
-        <div class="rain-drop rain-drop1"></div>
-        <div class="rain-drop"></div>
-        <div class="rain-drop rain-drop1"></div>
-      </div>
-      <!-- BROKEN CLOUDS -->
-      <div class="icon cloud-container broken-cloud 04d">
+
+      <!-- BROKEN CLOUDS - light cloud , dark cloud behind -->
+      <div class="icon-04d icon-04n icon">
         <div class="cloud"></div>
         <div class="cloud1"></div>
         <div class="cloud1 cloud2"></div>
         <div class="cloud1 cloud3"></div>
-        <div class="cloud-container broken-cloud1">
+        <div class="broken-cloud1">
           <div class="cloud"></div>
           <div class="cloud1"></div>
           <div class="cloud1 cloud2"></div>
           <div class="cloud1 cloud3"></div>
         </div>
       </div>
-
       <!-- FEW CLOUDS - CLOUD + BEHIND SUN-->
-      <div class="icon cloud-container few-clouds 02d">
-        <div class="icon sun-icon-container few-clouds-sun">
+      <div class="icon-02d icon">
+        <div class="icon-02d-sun-container">
           <div class="sun"></div>
         </div>
         <div class="cloud"></div>
@@ -69,9 +63,81 @@
         <div class="cloud1 cloud2"></div>
         <div class="cloud1 cloud3"></div>
       </div>
+      <!-- night -->
+      <div class="icon-02n icon">
+        <div class="icon-02n-sun-container">
+          <div class="icon-01n-sun"></div>
+        </div>
+        <div class="cloud"></div>
+        <div class="cloud1"></div>
+        <div class="cloud1 cloud2"></div>
+        <div class="cloud1 cloud3"></div>
+      </div>
+
+
+
+
 
       <!-- SHOWER RAIN - DARK CLOUDS - RAIN -->
-      <div class="icon cloud-container broken-cloud shower-rain 09d">
+      <div class="icon-09d icon-09n icon">
+        <div class="cloud"></div>
+        <div class="cloud1"></div>
+        <div class="cloud1 cloud2"></div>
+        <div class="cloud1 cloud3"></div>
+        <div class="broken-cloud1">
+          <div class="cloud"></div>
+          <div class="cloud1"></div>
+          <div class="cloud1 cloud2"></div>
+          <div class="cloud1 cloud3"></div>
+        </div>
+        <div class="rain-container">
+          <div class="rain-drop"></div>
+          <div class="rain-drop rain-drop1"></div>
+          <div class="rain-drop"></div>
+          <div class="rain-drop rain-drop1"></div>
+          <div class="rain-drop"></div>
+          <div class="rain-drop rain-drop1"></div>
+        </div>
+      </div>
+      <!-- RAIN - CLOUD + BEHIND SUN + RAIN -->
+      <div class="icon-10d icon">
+        <div class="icon-10d-sun-container icon-10n-sun-container">
+          <div class="sun"></div>
+        </div>
+        <div class="cloud"></div>
+        <div class="cloud1"></div>
+        <div class="cloud1 cloud2"></div>
+        <div class="cloud1 cloud3"></div>
+        <div class="rain-container">
+          <div class="rain-drop"></div>
+          <div class="rain-drop rain-drop1"></div>
+          <div class="rain-drop"></div>
+          <div class="rain-drop rain-drop1"></div>
+          <div class="rain-drop"></div>
+          <div class="rain-drop rain-drop1"></div>
+        </div>
+      </div>
+      <!-- night -->
+      <div class="icon-10n icon">
+        <div class="icon-10n-sun-container">
+          <div class="icon-01n-sun"></div>
+        </div>
+        <div class="cloud"></div>
+        <div class="cloud1"></div>
+        <div class="cloud1 cloud2"></div>
+        <div class="cloud1 cloud3"></div>
+        <div class="rain-container">
+          <div class="rain-drop"></div>
+          <div class="rain-drop rain-drop1"></div>
+          <div class="rain-drop"></div>
+          <div class="rain-drop rain-drop1"></div>
+          <div class="rain-drop"></div>
+          <div class="rain-drop rain-drop1"></div>
+        </div>
+      </div>
+
+      <!-- THUNDERSTORM -->
+      <div class="icon-11d icon-11n icon">
         <div class="cloud"></div>
         <div class="cloud1"></div>
         <div class="cloud1 cloud2"></div>
@@ -82,32 +148,73 @@
           <div class="cloud1 cloud2"></div>
           <div class="cloud1 cloud3"></div>
         </div>
-        <div class="icon rain-container">
-          <div class="rain-drop"></div>
-          <div class="rain-drop rain-drop1"></div>
-          <div class="rain-drop"></div>
-          <div class="rain-drop rain-drop1"></div>
-          <div class="rain-drop"></div>
-          <div class="rain-drop rain-drop1"></div>
+        <div class="icon-11d-thunder-container">
+          <div class="thunder"></div>
+          <div class="thunder1"></div>
         </div>
       </div>
 
-      <!-- RAIN - CLOUD + BEHIND SUN + RAIN -->
-      <div class="icon cloud-container few-clouds rain 10d">
-        <div class="icon sun-icon-container few-clouds-sun">
-          <div class="sun"></div>
-        </div>
+      <!--  SNOW COMING -->
+      <div class="icon-13d icon-13n icon">
         <div class="cloud"></div>
         <div class="cloud1"></div>
         <div class="cloud1 cloud2"></div>
         <div class="cloud1 cloud3"></div>
-        <div class="icon rain-container ">
-          <div class="rain-drop"></div>
-          <div class="rain-drop rain-drop1"></div>
-          <div class="rain-drop"></div>
-          <div class="rain-drop rain-drop1"></div>
-          <div class="rain-drop"></div>
-          <div class="rain-drop rain-drop1"></div>
+        <div class="icon-13d-snow-container">
+          <div class="snow"></div>
+          <div class="snow1"></div>
+          <div class="snow snow3"></div>
+          <div class="snow snow3 snow4"></div>
+          <div class="snow-square"></div>
+          <div class="snow-square snow-square1"></div>
+          <div class="snow-square snow-square2"></div>
+          <div class="snow-square snow-square3"></div>
+          <div class="snow-square snow-square4"></div>
+          <div class="snow-square snow-square5"></div>
+          <div class="snow-square snow-square6"></div>
+          <div class="snow-square snow-square7"></div>
+        </div>
+        <div class="icon-13d-snow-container1">
+          <div class="snow"></div>
+          <div class="snow1"></div>
+          <div class="snow snow3"></div>
+          <div class="snow snow3 snow4"></div>
+          <div class="snow-square"></div>
+          <div class="snow-square snow-square1"></div>
+          <div class="snow-square snow-square2"></div>
+          <div class="snow-square snow-square3"></div>
+          <div class="snow-square snow-square4"></div>
+          <div class="snow-square snow-square5"></div>
+          <div class="snow-square snow-square6"></div>
+          <div class="snow-square snow-square7"></div>
+        </div>
+        <div class="icon-13d-snow-container2">
+          <div class="snow"></div>
+          <div class="snow1"></div>
+          <div class="snow snow3"></div>
+          <div class="snow snow3 snow4"></div>
+          <div class="snow-square"></div>
+          <div class="snow-square snow-square1"></div>
+          <div class="snow-square snow-square2"></div>
+          <div class="snow-square snow-square3"></div>
+          <div class="snow-square snow-square4"></div>
+          <div class="snow-square snow-square5"></div>
+          <div class="snow-square snow-square6"></div>
+          <div class="snow-square snow-square7"></div>
+        </div>
+        <div class="icon-13d-snow-container3">
+          <div class="snow"></div>
+          <div class="snow1"></div>
+          <div class="snow snow3"></div>
+          <div class="snow snow3 snow4"></div>
+          <div class="snow-square"></div>
+          <div class="snow-square snow-square1"></div>
+          <div class="snow-square snow-square2"></div>
+          <div class="snow-square snow-square3"></div>
+          <div class="snow-square snow-square4"></div>
+          <div class="snow-square snow-square5"></div>
+          <div class="snow-square snow-square6"></div>
+          <div class="snow-square snow-square7"></div>
         </div>
       </div>
 
@@ -145,7 +252,7 @@
               </h1>
               <p id="current-date"></p>
               <p id="weather-description"></p>
-
+              <div id="weather-icon-container"></div>
               <img
                 id="weather-icon"
                 src="./assets/images/logo.png"

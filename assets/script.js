@@ -40,6 +40,8 @@ function getWeatherData(cityName) {
     method: "GET",
     success: function (response) {
       if (response) {
+        // $("#weather-icon-container").empty();
+        $(".icon").css("display", "none");
         // console.log(response);
         placeName = response.name;
         countryName = response.sys.country;
@@ -52,11 +54,11 @@ function getWeatherData(cityName) {
         humidity = response.main.humidity;
         windSpeed = response.wind.speed;
 
-console.log(response.weather[0].icon);
+        console.log(response.weather[0].icon);
         getTodaysDate(response.dt, response.sys.sunrise, response.sys.sunset);
         getUvIndex(response.coord.lat, response.coord.lon);
         storedCities(cityName);
-        
+        getBetterIcon();
       }
     },
     error: function () {
@@ -102,17 +104,28 @@ function getTodaysDate(dt, sunrise, sunset) {
   sunsetTime = sunsetConvertTime.substring(16, 21);
 }
 
+function getBetterIcon() {
+  console.log("this be: ", weatherIconUrl);
+  //$(`.icon-${weatherIconUrl}`).css("display","block");
+}
+
 function renderWeatherData() {
+  // $(".icon").css("display", "none");
   let tempValues = [temperature, maxTemp, minTemp, feelsLike];
   let temps = tempValues.map((values) => Math.trunc(values) + "\xB0");
-
+  
   //  console.log("description ", weatherDescription);
   $("#city-name, #country-name").text(`${placeName}, ${countryName}`);
   $("#weather-description").text(`${weatherDescription}`);
-  $("#weather-icon").attr(
-    "src",
-    `https://openweathermap.org/img/wn/${weatherIconUrl}@2x.png`
+  $("#weather-icon").css("display", "none");
+  $("#weather-icon-container").append(
+    $(`.icon-${weatherIconUrl}`).css("display", "block")
   );
+  // $("#weather-icon").attr(
+  //   "src",
+  //   `https://openweathermap.org/img/wn/${weatherIconUrl}@2x.png`
+  // );
+
   $("#current-date").text(`${todaysDate}`);
   $("#feels-like").text(`Feels like ${temps[3]}`);
   $("#temperature").text(`${temps[0]} F`);
@@ -312,10 +325,10 @@ if (
   localStorage.getItem("stored-city-names") === null ||
   localStorage.getItem("stored-city-names") === "undefined"
 ) {
-  $(".fa-star").css("display","none");
+  $(".fa-star").css("display", "none");
   localStorage.setItem("stored-city-names", JSON.stringify([]));
 } else {
-  $(".fa-star").css("display","initial");
+  $(".fa-star").css("display", "initial");
   renderStoredCityNames();
 }
 
@@ -327,14 +340,13 @@ if (
 ) {
   // Create a localStorage for default city name
   localStorage.setItem("default-city-name", JSON.stringify([]));
-}
-else if (JSON.parse(localStorage.getItem("default-city-name")).length == 0) {
+} else if (JSON.parse(localStorage.getItem("default-city-name")).length == 0) {
   console.log(
     "Click the star icon and mark a city as your default city for weather data."
   );
 } else if (JSON.parse(localStorage.getItem("default-city-name")).length == 1) {
   $(".default-city-name").css("display", "none");
   $(".delete-default-city-name").css("display", "block");
-  let defaultName = JSON.parse(localStorage.getItem("default-city-name"))[0]
+  let defaultName = JSON.parse(localStorage.getItem("default-city-name"))[0];
   getWeatherData(defaultName);
 }
