@@ -4,10 +4,21 @@
   justify-content: center;
   align-items: center;
   padding-top: 2rem;
-    padding-bottom: 2rem;
-
+  padding-bottom: 2rem;
 }
-.icon-02d, .icon-03d, .icon-03n, .icon-04d, .icon-04n, .icon-09d, .icon-09n, .icon-10d, .icon-10n,.icon-11d, .icon-11n, .icon-13d, .icon-13n {
+.icon-02d,
+.icon-03d,
+.icon-03n,
+.icon-04d,
+.icon-04n,
+.icon-09d,
+.icon-09n,
+.icon-10d,
+.icon-10n,
+.icon-11d,
+.icon-11n,
+.icon-13d,
+.icon-13n {
   margin-left: -55px;
   margin-top: 1rem;
 }
@@ -16,6 +27,26 @@
   display: none;
 }
 /* Sunny */
+.icon-01d,
+.icon-01n {
+  overflow: hidden;
+}
+.icon-01d .sun,
+.icon-01n-sun {
+  -webkit-animation: showup 1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes showup {
+  0% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 .sun,
 .icon-01n-sun {
   width: 50px;
@@ -564,10 +595,11 @@ input,
 }
 
 @media screen and (min-width: 1200px) {
-  #hourly-forecast{
+  #hourly-forecast {
     justify-content: center;
   }
-  #hourly-card, #forecast-card{
+  #hourly-card,
+  #forecast-card {
     width: 100%;
   }
 }

@@ -109,11 +109,6 @@ function getTodaysDate(dt, sunrise, sunset) {
   sunsetTime = sunsetConvertTime.substring(16, 21);
 }
 
-// function getBetterIcon() {
-//   console.log("this be: ", weatherIconUrl);
-//   //$(`.icon-${weatherIconUrl}`).css("display","block");
-// }
-
 function renderWeatherData() {
   // $(".icon").css("display", "none");
   let tempValues = [temperature, maxTemp, minTemp, feelsLike];
@@ -140,7 +135,10 @@ function renderWeatherData() {
   $("#uv-index").text(` ${uvIndexValue} UV index`);
   $("#sunrise-time").text(` ${sunriseTime} sunrise`);
   $("#sunset-time").text(` ${sunsetTime} sunset`);
+
 }
+
+
 
 function getHourlyWeather(data) {
   $("#hourly-forecast").empty();
