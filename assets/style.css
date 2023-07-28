@@ -483,33 +483,74 @@ svg {
 
 .mist,
 .mist1,
-.mist2, .mist3, .mist4 {
+.mist2,
+.mist3,
+.mist4 {
   position: absolute;
-  top: 53px;
-  left: 24px;
+  top: 40px;
+  left: 19px;
   height: 3px;
   background: #595858;
-  width: 40px;
+  width: 55px;
   border-radius: 10px;
+  border: 0.1px solid white;
+  border-bottom: hidden;
+  border-left: hidden;
 }
 .mist1 {
-  left: 67px;
-  width: 30px;
+  left: 78px;
+  width: 34px;
 }
 .mist2 {
-  top: 60px;
-  width: 65px;
+  top: 45px;
+  width: 89px;
+  left: 10px;
+}
+.mist3 {
+  top: 51px;
+  width: 52px;
+  left: 27px;
+}
+.mist4 {
+  top: 51px;
+  width: 32px;
+  left: 86px;
+}
+.mist5 {
+  top: 57px;
+  left: 16px;
+}
+.mist6 {
+  top: 63px;
   left: 28px;
 }
-.mist3{
-  top: 67px;
-  width: 30px;
-  left:35px;
+.mist7 {
+  top: 63px;
+  left: 85px;
 }
-.mist4{
-  top:67px;
-  width: 10px;
-    left: 68px;
+.mist, .mist1, .mist3, .mist4 {
+  animation: slidein 5s 1 ease-in-out;
+  -webkit-animation: slidein 5s 1 ease-in-out;
+}
+.mist2{
+  animation: slidein 6s 1 ease-in-out;
+  -webkit-animation: slidein 6s 1 ease-in-out;
+}
+@keyframes slidein {
+  0% {
+    transform: translateX(-40px);
+  }
+  100% {
+    transform: translatex(0px);
+  }
+}
+@-webkit-keyframes slidein {
+  0% {
+    transform: translateX(-40px);
+  }
+  100% {
+    transform: translatex(0px);
+  }
 }
 
 
