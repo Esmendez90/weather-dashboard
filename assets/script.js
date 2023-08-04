@@ -12,12 +12,12 @@ let minTemp;
 let humidity;
 let windSpeed;
 let currentDate;
-let todaysDate;
+let currentTime;
 let weatherIconUrl;
 let uvIndexValue;
 let tz;
 let sunrise;
-let sunset;
+let sunsetTime;
 
 btn.addEventListener("click", getCityName);
 
@@ -43,6 +43,17 @@ function getWeatherData(cityName) {
     success: function (response) {
       if (response) {
         $(".icon").css("display", "none");
+
+        if (JSON.parse(localStorage.getItem("default-city-name")).length == 0) {
+          $(".default-city-name").css("display", "block");
+        } else if (
+          JSON.parse(localStorage.getItem("default-city-name")).length == 1
+        ) {
+          $(".default-city-name").css("display", "none");
+        }
+
+        //$(".default-city-name").css("display","block");
+        //$(".delete-default-city-name").css("display","none");
         // console.log(response);
         placeName = response.name;
         countryName = response.sys.country;
@@ -61,9 +72,9 @@ function getWeatherData(cityName) {
         windSpeed = response.wind.speed;
         tz = response.timezone;
         sunrise = response.sys.sunrise;
-        sunset = response.sys.sunset
-        
-console.log(response.timezone)
+        sunset = response.sys.sunset;
+
+        //console.log(response.timezone)
         getTodaysDate();
         getUvIndex(response.coord.lat, response.coord.lon);
         storedCities(cityName);
@@ -102,73 +113,76 @@ function getUvIndex(...data) {
 }
 
 function getTodaysDate() {
-  // console.log(data);
   d = new Date();
   localTime = d.getTime();
   localOffset = d.getTimezoneOffset() * 60000;
   utc = localTime + localOffset;
   currentDate = new Date(utc + 1000 * tz);
- 
-  // for sunrise and sunset
-  sunrise = new Date((tz + sunrise) * 1000).toUTCString().substring(17,22);
-  sunset = new Date((tz + sunset) * 1000).toUTCString().substring(17,22);
 
+  let localTimeHour = currentDate.toString().substring(16, 18);
+  let localTimeMins = currentDate.toString().substring(18, 21);
+
+  localTimeHour = localTimeHour - 12;
+
+  currentTime = localTimeHour + localTimeMins + " pm";
+
+  // for sunrise and sunset
+  sunrise = new Date((tz + sunrise) * 1000).toUTCString().substring(17, 22);
+  sunrise = sunrise.substring(1, 5) + " am";
+
+  let sunsetTime = new Date((tz + sunset) * 1000)
+    .toUTCString()
+    .substring(17, 22);
+  let sunsetHour = sunsetTime.substring(0, 2);
+  let sunsetMins = sunsetTime.substring(3, 5);
+  sunsetHour = sunsetHour - 12;
+
+  //console.log(sunsetHour, sunsetMins);
+  sunset = sunsetHour + ":" + sunsetMins + " pm";
 }
 
 function renderWeatherData() {
-  // $(".icon").css("display", "none");
   let tempValues = [temperature, maxTemp, minTemp, feelsLike];
   let temps = tempValues.map((values) => Math.trunc(values) + "\xB0");
-
-  //  console.log("description ", weatherDescription);
   $("#city-name, #country-name").text(`${placeName}, ${countryName}`);
   $("#weather-description").text(`${weatherDescription}`);
   $("#weather-icon").css("display", "none");
   $("#weather-icon-container").append(
     $(`.icon-${weatherIconUrl}`).css("display", "block")
   );
-  // $("#weather-icon").attr(
-  //   "src",
-  //   `https://openweathermap.org/img/wn/${weatherIconUrl}@2x.png`
-  // );
-
-  $("#current-date").text(`${currentDate}`.substring(0,15));
-  $("#current-time").text("Local time: " + `${currentDate}`.substring(15,21));
+  $("#current-date").text(`${currentDate}`.substring(0, 15));
+  $("#current-time").text("Local time: " + `${currentTime}`);
   $("#feels-like").text(`Feels like ${temps[3]}`);
   $("#temperature").text(`${temps[0]} F`);
   $("#max-min-temp").text(`max ${temps[1]} / min ${temps[2]}`);
   $("#humidity").text(` ${humidity}% humidity`);
   $("#wind-speed").text(` ${windSpeed} mph wind speed`);
   $("#uv-index").text(` ${uvIndexValue} UV index`);
-  $("#sunrise-time").text(` ${sunrise} sunrise`);
-  $("#sunset-time").text(` ${sunset} sunset`);
+  $("#sunrise-time").text(` ${sunrise} Sunrise`);
+  $("#sunset-time").text(` ${sunset} Sunset`);
 }
 
 function getHourlyWeather(data) {
   $("#hourly-forecast").empty();
-  
+
   for (let i = 0; i < 13; i++) {
-    console.log(data[i].dt);
-    let hours = new Date((tz + data[i].dt) * 1000).toUTCString().substring(17,19)
-    // let hours = new Date(data[i].dt * 1000);
-    // let hourly = hours.getHours();
-  console.log(hours);
+    let hours = new Date((tz + data[i].dt) * 1000)
+      .toUTCString()
+      .substring(17, 19);
+
     if (hours > "12") {
       hours = hours - 12 + " pm";
     } else if (hours == "12") {
       hours = hours + " pm";
-    } else if (hours == "00"){
+    } else if (hours == "00") {
       hours = 12 + " am";
-    }
-    else if (hours < "12"){
+    } else if (hours < "12") {
       hours = hours + " am";
     }
 
     let hourlyTemp = Math.trunc(data[i].temp);
 
     let hourlyIcon = `https://openweathermap.org/img/wn/${data[i].weather[0].icon}@2x.png`;
-    // console.log(hourlyIcon);
-
     $("#hourly-forecast").append(
       `<div id="hourly-card">
                 <p style="font-weight:bold;width:45px;">${hours}</p>
@@ -353,6 +367,7 @@ if (
   // Create a localStorage for default city name
   localStorage.setItem("default-city-name", JSON.stringify([]));
 } else if (JSON.parse(localStorage.getItem("default-city-name")).length == 0) {
+  $(".default-city-name").css("display", "none");
   console.log(
     "Click the star icon and mark a city as your default city for weather data."
   );
