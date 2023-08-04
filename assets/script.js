@@ -11,11 +11,13 @@ let maxTemp;
 let minTemp;
 let humidity;
 let windSpeed;
+let currentDate;
 let todaysDate;
 let weatherIconUrl;
 let uvIndexValue;
-let sunriseTime;
-let sunsetTime;
+let tz;
+let sunrise;
+let sunset;
 
 btn.addEventListener("click", getCityName);
 
@@ -40,7 +42,6 @@ function getWeatherData(cityName) {
     method: "GET",
     success: function (response) {
       if (response) {
-        // $("#weather-icon-container").empty();
         $(".icon").css("display", "none");
         // console.log(response);
         placeName = response.name;
@@ -58,12 +59,14 @@ function getWeatherData(cityName) {
         minTemp = response.main.temp_min;
         humidity = response.main.humidity;
         windSpeed = response.wind.speed;
-
-        //console.log(response.weather[0].icon);
-        getTodaysDate(response.dt, response.sys.sunrise, response.sys.sunset);
+        tz = response.timezone;
+        sunrise = response.sys.sunrise;
+        sunset = response.sys.sunset
+        
+console.log(response.timezone)
+        getTodaysDate();
         getUvIndex(response.coord.lat, response.coord.lon);
         storedCities(cityName);
-        // getBetterIcon();
       }
     },
     error: function () {
@@ -98,22 +101,25 @@ function getUvIndex(...data) {
   });
 }
 
-function getTodaysDate(dt, sunrise, sunset) {
-  let date = String(new Date(dt * 1000));
-  todaysDate = date.substring(4, 15);
+function getTodaysDate() {
+  // console.log(data);
+  d = new Date();
+  localTime = d.getTime();
+  localOffset = d.getTimezoneOffset() * 60000;
+  utc = localTime + localOffset;
+  currentDate = new Date(utc + 1000 * tz);
+ 
+  // for sunrise and sunset
+  sunrise = new Date((tz + sunrise) * 1000).toUTCString().substring(17,22);
+  sunset = new Date((tz + sunset) * 1000).toUTCString().substring(17,22);
 
-  let sunriseConvertTime = String(new Date(sunrise * 1000));
-  sunriseTime = sunriseConvertTime.substring(17, 21);
-
-  let sunsetConvertTime = String(new Date(sunset * 1000));
-  sunsetTime = sunsetConvertTime.substring(16, 21);
 }
 
 function renderWeatherData() {
   // $(".icon").css("display", "none");
   let tempValues = [temperature, maxTemp, minTemp, feelsLike];
   let temps = tempValues.map((values) => Math.trunc(values) + "\xB0");
-  
+
   //  console.log("description ", weatherDescription);
   $("#city-name, #country-name").text(`${placeName}, ${countryName}`);
   $("#weather-description").text(`${weatherDescription}`);
@@ -126,33 +132,36 @@ function renderWeatherData() {
   //   `https://openweathermap.org/img/wn/${weatherIconUrl}@2x.png`
   // );
 
-  $("#current-date").text(`${todaysDate}`);
+  $("#current-date").text(`${currentDate}`.substring(0,15));
+  $("#current-time").text("Local time: " + `${currentDate}`.substring(15,21));
   $("#feels-like").text(`Feels like ${temps[3]}`);
   $("#temperature").text(`${temps[0]} F`);
   $("#max-min-temp").text(`max ${temps[1]} / min ${temps[2]}`);
   $("#humidity").text(` ${humidity}% humidity`);
   $("#wind-speed").text(` ${windSpeed} mph wind speed`);
   $("#uv-index").text(` ${uvIndexValue} UV index`);
-  $("#sunrise-time").text(` ${sunriseTime} sunrise`);
-  $("#sunset-time").text(` ${sunsetTime} sunset`);
-
+  $("#sunrise-time").text(` ${sunrise} sunrise`);
+  $("#sunset-time").text(` ${sunset} sunset`);
 }
-
-
 
 function getHourlyWeather(data) {
   $("#hourly-forecast").empty();
-  // console.log(data);
+  
   for (let i = 0; i < 13; i++) {
-    let hours = new Date(data[i].dt * 1000);
-    let hourly = hours.getHours();
-
-    if (hourly > "12") {
-      hourly = hourly - 12 + "PM";
-    } else if (hourly == "12") {
-      hourly = hourly + "PM";
-    } else {
-      hourly = hourly + "AM";
+    console.log(data[i].dt);
+    let hours = new Date((tz + data[i].dt) * 1000).toUTCString().substring(17,19)
+    // let hours = new Date(data[i].dt * 1000);
+    // let hourly = hours.getHours();
+  console.log(hours);
+    if (hours > "12") {
+      hours = hours - 12 + " pm";
+    } else if (hours == "12") {
+      hours = hours + " pm";
+    } else if (hours == "00"){
+      hours = 12 + " am";
+    }
+    else if (hours < "12"){
+      hours = hours + " am";
     }
 
     let hourlyTemp = Math.trunc(data[i].temp);
@@ -162,7 +171,7 @@ function getHourlyWeather(data) {
 
     $("#hourly-forecast").append(
       `<div id="hourly-card">
-                <p style="font-weight:bold;">${hourly}</p>
+                <p style="font-weight:bold;width:45px;">${hours}</p>
                  <p style="margin-bottom: 5px; font-weight:bold;">${hourlyTemp}\xB0</p>
                  <div class="hourly-icon-container">
                  <img id="hourly-weather-icon" src="${hourlyIcon}" alt="hourly weather icon" />
@@ -206,7 +215,7 @@ function extendedForecast(data) {
     // Create 5 cards that will display the weather forecast for 5 days.
     $("#forecast").append(
       `<div id="forecast-card">
-            <p style="font-size:20px; letter-spacing:0.5px; font-weight:bold;">${date}</p>
+            <p style="font-size:17px; letter-spacing:0.5px; font-weight:bold;">${date}</p>
             
            <p style="font-weight:bold;">${forecastTemp}\xB0</p>
            <div class="forecast-icon-container">

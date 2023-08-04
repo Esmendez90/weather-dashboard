@@ -629,9 +629,12 @@ input,
   margin-bottom: 0;
   text-shadow: 0 0 2px grey;
 }
-#current-date {
+#current-date, #current-time {
   text-align: center;
   margin: 0;
+}
+#current-date{
+  margin-top: 10px;
 }
 
 #weather-description {
@@ -666,12 +669,23 @@ input,
 .delete-default-city-name {
   color: #f4b500;
   font-size: 16px;
-  clear: right;
-  float: left;
+  /* clear: right;
+  float: left; */
   border: none;
   background-color: transparent;
 }
 
+.fa-star::after, .fa-trash-can::after{
+  content: " Click the star to save this country/city as your default.";
+  font-family: auto;
+  font-size: 14px;
+  color: white;
+  margin-left: 8px;
+  /* letter-spacing: 1px; */
+}
+.fa-trash-can::after{
+  content: " Click the trash can to delete your default country/city.";
+}
 .delete-default-city-name {
   display: none;
 }
@@ -732,7 +746,7 @@ input,
 }
 #hourly-forecast {
   background-color: #3c4b8645;
-  padding: 25px 0;
+  padding: 5px 0;
 }
 
 #hourly-forecast,
