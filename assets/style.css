@@ -559,7 +559,7 @@ svg {
 body {
   width: 100vw;
   /* height: 100vh; */
-  background-color: #7488d5;
+  background-color: #3F51B5;
   margin: 0;
   color: white;
 }
@@ -745,8 +745,8 @@ input,
   overflow-y: hidden;
 }
 #hourly-forecast {
-  background-color: #3c4b8645;
-  padding: 5px 0;
+  /* background-color: #3c4b8645; */
+  /* padding: 5px 0; */
 }
 
 #hourly-forecast,

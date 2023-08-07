@@ -119,12 +119,22 @@ function getTodaysDate() {
   utc = localTime + localOffset;
   currentDate = new Date(utc + 1000 * tz);
 
-  let localTimeHour = currentDate.toString().substring(16, 18);
-  let localTimeMins = currentDate.toString().substring(18, 21);
+  let localTimeHour = currentDate.getHours();
+  let localTimeMins = currentDate.getMinutes();
 
-  localTimeHour = localTimeHour - 12;
+  // hours > 12 >...13,14,15 then
+  // hours minus 12
+  // if hours < 12 then hours
+  // if hours = 12 then hours
 
-  currentTime = localTimeHour + localTimeMins + " pm";
+  if (localTimeHour > 12) {
+    localTimeHour - 12;
+    currentTime = `${localTimeHour}:${localTimeMins} pm`;
+  } else if ((localTimeHour = 12)) {
+    currentTime = `${localTimeHour}:${localTimeMins} pm`;
+  } else {
+    currentTime = `${localTimeHour}:${localTimeMins} am`
+  }
 
   // for sunrise and sunset
   sunrise = new Date((tz + sunrise) * 1000).toUTCString().substring(17, 22);
@@ -185,7 +195,7 @@ function getHourlyWeather(data) {
     let hourlyIcon = `https://openweathermap.org/img/wn/${data[i].weather[0].icon}@2x.png`;
     $("#hourly-forecast").append(
       `<div id="hourly-card">
-                <p style="font-weight:bold;width:45px;">${hours}</p>
+                <p style="font-weight:bold;width:50px;">${hours}</p>
                  <p style="margin-bottom: 5px; font-weight:bold;">${hourlyTemp}\xB0</p>
                  <div class="hourly-icon-container">
                  <img id="hourly-weather-icon" src="${hourlyIcon}" alt="hourly weather icon" />
