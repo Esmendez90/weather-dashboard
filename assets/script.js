@@ -51,10 +51,6 @@ function getWeatherData(cityName) {
         ) {
           $(".default-city-name").css("display", "none");
         }
-
-        //$(".default-city-name").css("display","block");
-        //$(".delete-default-city-name").css("display","none");
-        // console.log(response);
         placeName = response.name;
         countryName = response.sys.country;
 
@@ -107,8 +103,8 @@ function getUvIndex(...data) {
     }
 
     getHourlyWeather(response.hourly);
-    renderWeatherData();
     extendedForecast(response);
+    renderWeatherData();
   });
 }
 
@@ -122,13 +118,8 @@ function getTodaysDate() {
   let localTimeHour = currentDate.getHours();
   let localTimeMins = currentDate.getMinutes();
 
-  // hours > 12 >...13,14,15 then
-  // hours minus 12
-  // if hours < 12 then hours
-  // if hours = 12 then hours
-
   if (localTimeHour > 12) {
-    localTimeHour - 12;
+    localTimeHour = localTimeHour - 12;
     currentTime = `${localTimeHour}:${localTimeMins} pm`;
   } else if ((localTimeHour = 12)) {
     currentTime = `${localTimeHour}:${localTimeMins} pm`;
@@ -212,8 +203,6 @@ function extendedForecast(data) {
   // for loop that will get us the 5 day weather forecast
   for (let i = 1; i < 8; i++) {
     let date = new Date(data.daily[i].dt * 1000);
-    //  let todaysDate =
-    //    date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
     date = date.getDay();
     if (date == 0) {
       date = "Sunday";
@@ -269,7 +258,7 @@ function renderStoredCityNames() {
   for (let i = 0; i < storage.length; i++) {
     $("#saved-cities").append(`
    <li class="saved-city-name" id=${[i]}>
-   <button class="delete-city-btn"><i class="fa-solid fa-xmark"></i></button>
+   <button class="delete-city-btn" aria-level="Delete"><i class="fa-solid fa-xmark"></i></button>
    ${storage[i]}
    </li>
     `);
@@ -323,7 +312,7 @@ $(".default-city-name").on("click", function (event) {
   );
 
   if (defaultCityStorage.length == 0) {
-    alert(`${defaultCityName} has been added as your default city.`);
+    alert(`${defaultCityName} has been added as your favorite city.`);
 
     let defaultCityStorage = JSON.parse(
       localStorage.getItem("default-city-name")
@@ -337,7 +326,7 @@ $(".default-city-name").on("click", function (event) {
     $(".default-city-name").css("display", "none");
     $(".delete-default-city-name").css("display", "block");
   } else {
-    alert(`You have already set ${defaultCityName} as your default city.`);
+    alert(`You have already set ${defaultCityName} as your favorite city.`);
   }
 });
 
@@ -355,6 +344,13 @@ $(".delete-default-city-name").on("click", function (event) {
   $(".delete-default-city-name").css("display", "none");
   $(".default-city-name").css("display", "block");
 });
+
+
+function welcomePageAnimation(defaultName) {
+  console.log(defaultName);
+  window.location.href = "./main.html";
+}
+
 
 // Verify if localStorage for list of Searched Cities
 if (
@@ -379,7 +375,7 @@ if (
 } else if (JSON.parse(localStorage.getItem("default-city-name")).length == 0) {
   $(".default-city-name").css("display", "none");
   console.log(
-    "Click the star icon and mark a city as your default city for weather data."
+    "Click the star icon and mark a city as your favorite city for weather data."
   );
 } else if (JSON.parse(localStorage.getItem("default-city-name")).length == 1) {
   $(".default-city-name").css("display", "none");
@@ -387,3 +383,4 @@ if (
   let defaultName = JSON.parse(localStorage.getItem("default-city-name"))[0];
   getWeatherData(defaultName);
 }
+

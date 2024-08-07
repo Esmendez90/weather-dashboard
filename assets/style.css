@@ -560,8 +560,13 @@ body {
   width: 100vw;
   /* height: 100vh; */
   background-color: #3F51B5;
+  /* background-image: linear-gradient(180deg, #F44336, #4055c8b5, #2196F3, #673AB7); */
   margin: 0;
   color: white;
+}
+main{
+    background-color: #3F51B5;
+
 }
 h3,
 #city-name {
@@ -676,7 +681,7 @@ input,
 }
 
 .fa-star::after, .fa-trash-can::after{
-  content: " Click the star to save this country/city as your default.";
+  content: " Click the star to save this country/city as your favorite.";
   font-family: auto;
   font-size: 14px;
   color: white;
@@ -684,7 +689,7 @@ input,
   /* letter-spacing: 1px; */
 }
 .fa-trash-can::after{
-  content: " Click the trash can to delete your default country/city.";
+  content: " Click the trash can to delete your favorite country/city.";
 }
 .delete-default-city-name {
   display: none;
@@ -839,6 +844,10 @@ input,
 }
 
 @media screen and (min-width: 768px) {
+  body {
+    background-image: linear-gradient(180deg, #E91E63, #4055c8b5, #2196F3, #673AB7);
+
+  }
   header h1 {
     font-size: 50px;
   }
@@ -846,7 +855,13 @@ input,
     width: 260px;
   }
   main {
+    padding-top: 2rem;
+    background-color: #3f51b552;
+    border-radius: 10px;
     margin: 0 15%;
+  }
+  #city-name{
+    font-size: 35px;
   }
   .weather-data-container ul {
     margin-top: 50px;
