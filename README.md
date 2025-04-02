@@ -1,47 +1,51 @@
 # Weather Dashboard
 
-## User Story
+Welcome to the Weather Dashboard application repository! This project provides users with real-time weather information and a 5-day forecast for any city worldwide. The application features custom-designed weather icons for an enhanced user experience.
 
-As a person who enjoys traveling, I want to be able to see the weather of the city I am visiting so that I can plan accordingly. 
+## Table of Contents
 
-## Table of Content
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contact](#contact)
 
-* [Motivation](#motivation)
-* [Description](#description)
-* [Requirements](#requirements)
-* [Screenshots](#screenshots)
-* [Link to Page](#link-to-page)
-* [Tools](#tools)
+## Project Overview
 
-## Motivation
+The Weather Dashboard application offers users an interactive platform to check current weather conditions and forecasts. By utilizing a weather API, the app delivers accurate and up-to-date weather data, making it a useful tool for weather enthusiasts and anyone planning their day.
 
-I want to create a weather dashboard application that allows me to see the weather forecast of any city. 
+## Features
 
-## Description
+- **Current Weather**: Displays the current weather conditions for any searched city.
+- **5-Day Forecast**: Provides a detailed weather forecast for the next five days.
+- **Custom Icons**: Features uniquely designed and animated weather icons for better visualization.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
 
-Build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS. Use the OpenWeather API to retrieve weather data for cities. The documentation includes a section called "How to start" that will provide basic setup and usage instructions. Use `localStorage` to store any persistent data.
+## Technologies Used
 
-## Requirements 
+- **Frontend**: HTML, CSS, JavaScript
+- **API**: Weather API
+- **Deployment**: GitHub Pages
 
-The weather dashboard should allow the user to:
+## Installation
 
-* Search for a city and be presented with current and future conditions for that city and that city is added to the search history.
-* View current weather conditions for that city and be presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index.
-* View future weather conditions for that city and be presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity.
-* Open the weather dashboard and be presented with a list of the last searched cities.
-* Click on any of the previously searched cities and see the weather data of the city the user clicked on.
+To run the application locally, follow these steps:
 
-## Screenshots
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Esmendez90/weather-dashboard.git
+   cd weather-dashboard
+   Open index.html in your browser to view the application.
 
-<img src="assets/images/weather-dashboard.png" alt="Weather dashboard" width="80%" height="75%">
+## Usage
 
-## Link to Page
+Enter the name of a city into the search bar to view its current weather conditions and a 5-day forecast. The application will display temperature, humidity, wind speed, and other relevant weather details.
 
-<https://esmendez90.github.io/weather-dashboard/>
+## Contact
 
-## Tools
+For any questions or inquiries, feel free to contact us:
 
-* Visual Studio Code <https://code.visualstudio.com>.
-* OpenWeather API <https://openweathermap.org/api>.
-* Chrome DevTools - Inspect.
- 
+Location: New York, NY
+Email: edmendezn@gmail.com
+Phone: (201) 360-1905

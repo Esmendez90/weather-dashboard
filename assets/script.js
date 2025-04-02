@@ -41,9 +41,11 @@ function getWeatherData(cityName) {
     url: queryURL,
     method: "GET",
     success: function (response) {
+      //console.log(response);
       if (response) {
         $(".icon").css("display", "none");
 
+        // local storage stuff
         if (JSON.parse(localStorage.getItem("default-city-name")).length == 0) {
           $(".default-city-name").css("display", "block");
         } else if (
@@ -71,9 +73,12 @@ function getWeatherData(cityName) {
         sunset = response.sys.sunset;
 
         //console.log(response.timezone)
-        getTodaysDate();
+       getTodaysDate();
         getUvIndex(response.coord.lat, response.coord.lon);
-        storedCities(cityName);
+       storedCities(cityName);
+       getHourlyWeather(response.hourly);
+       extendedForecast(response);
+        renderWeatherData();
       }
     },
     error: function () {
@@ -83,9 +88,11 @@ function getWeatherData(cityName) {
     },
   });
 }
-// UV index data. Execute hourly and extended weather data and render it
+//UV index data. Execute hourly and extended weather data and render it
+
 function getUvIndex(...data) {
-  let oneCallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${data[0]}&lon=${data[1]}&appid=${apiKey}&units=imperial`;
+  //console.log(...data);
+  let oneCallURL = `https://api.openweathermap.org/data/3.0/onecall?lat=${data[0]}&lon=${data[1]}&appid=${apiKey}&units=imperial`;
 
   $.ajax({
     url: oneCallURL,
@@ -164,13 +171,15 @@ function renderWeatherData() {
 }
 
 function getHourlyWeather(data) {
+  //console.log("data", data);
   $("#hourly-forecast").empty();
 
   for (let i = 0; i < 13; i++) {
+    
     let hours = new Date((tz + data[i].dt) * 1000)
       .toUTCString()
       .substring(17, 19);
-
+     // console.log("hours", hours);
     if (hours > "12") {
       hours = hours - 12 + " pm";
     } else if (hours == "12") {
@@ -347,7 +356,7 @@ $(".delete-default-city-name").on("click", function (event) {
 
 
 function welcomePageAnimation(defaultName) {
-  console.log(defaultName);
+ // console.log(defaultName);
   window.location.href = "./main.html";
 }
 
@@ -374,7 +383,7 @@ if (
   localStorage.setItem("default-city-name", JSON.stringify([]));
 } else if (JSON.parse(localStorage.getItem("default-city-name")).length == 0) {
   $(".default-city-name").css("display", "none");
-  console.log(
+  alert(
     "Click the star icon and mark a city as your favorite city for weather data."
   );
 } else if (JSON.parse(localStorage.getItem("default-city-name")).length == 1) {
